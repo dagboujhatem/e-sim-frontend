@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Ooredoo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f2f2f2; /* Couleur de fond douce */
+            color: #e60000; /* Couleur du texte Ooredoo */
+            font-family: Arial, sans-serif; /* Police lisible */
+        }
+        .header {
+            display: flex; /* Utilise flexbox pour aligner logo et texte */
+            align-items: center; /* Centre verticalement */
+            margin: 20px; /* Marges */
+        }
+        .logo {
+            width: 150px; /* Taille du logo */
+            margin-right: 20px; /* Espace à droite du logo */
+        }
+        .video-container {
+            margin: 0; /* Supprime les marges pour le conteneur de la vidéo */
+            width: 100%; /* Occupe toute la largeur de la page */
+            height: 315px; /* Hauteur de la vidéo */
+        }
+        .paragraph {
+            background-color: #ffffff; /* Fond blanc pour le paragraphe */
+            padding: 15px;
+            border-radius: 5px; /* Coins arrondis */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre */
+            margin: 20px auto; /* Marge autour du paragraphe */
+            max-width: 600px; /* Largeur maximale */
+            color: #000000; /* Texte en noir */
+            display: flex; /* Utiliser flexbox pour aligner le contenu */
+            justify-content: space-between; /* Espacement entre le paragraphe et le bouton */
+            align-items: center; /* Centre verticalement */
+        }
+        .btn-start {
+            background-color: #e60000; /* Couleur de fond du bouton Ooredoo */
+            color: #ffffff; /* Couleur du texte du bouton */
+            margin-left: 15px; /* Espace à gauche du bouton */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête avec Logo Ooredoo et Texte -->
+    <div class="header">
+        <img src="https://dwglogo.com/wp-content/uploads/2016/04/1453x1000-ooredo.png" alt="Logo Ooredoo" class="logo">
+        <h1>Hello Ooredoo</h1>
+    </div>
+
+    <!-- Vidéo -->
+    <div class="video-container">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/GHNAnHW3s0Y" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- Paragraphe sur l'eSIM avec Bouton -->
+    <div class="paragraph">
+        <p>Découvrez l'eSIM, une nouvelle façon de se connecter sans avoir besoin de carte SIM physique. </p>
+        <button class="btn btn-danger" (click)="goToOtp()">Start</button> 
+    </div>
+
+</body>
+</html>
+
+
+
+
+

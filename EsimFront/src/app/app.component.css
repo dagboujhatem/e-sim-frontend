@@ -1,0 +1,45 @@
+/* Couleurs principales */
+
+
+/* Conteneur principal */
+.home-container {
+    max-width: 800px; /* Largeur maximale */
+    margin: auto; /* Centre le conteneur */
+    padding: 20px; /* Espacement interne */
+    border: 1px solid var(--ooredoo-dark); /* Bordure */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: var(--ooredoo-white); /* Couleur de fond du conteneur */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre */
+}
+
+/* Message de bienvenue */
+.hello-message {
+    
+    font-weight: bold; /* Gras */
+    text-align: center; /* Centre le texte */
+    margin-bottom: 20px; /* Espacement en bas */
+}
+
+/* Paragraphe eSIM */
+.esim-paragraph {
+    font-size: 16px; /* Taille de la police */
+    line-height: 1.5; /* Hauteur de ligne */
+    margin: 20px 0; /* Espacement vertical */
+    text-align: justify; /* Justifie le texte */
+}
+
+/* Conteneur de vidéo */
+.video-container {
+    text-align: center; /* Centre le conteneur de vidéo */
+    margin-top: 20px; /* Espacement au-dessus */
+}
+
+/* Styles pour la vidéo */
+video {
+    width: 100%; /* Prend 100% de la largeur du conteneur */
+    max-width: 640px; /* Largeur maximale */
+    height: auto; /* Hauteur automatique pour maintenir le ratio */
+    border-radius: 8px; /* Coins arrondis pour la vidéo */
+}
+
+

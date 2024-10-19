@@ -1,0 +1,103 @@
+/* Header styling */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Aligns logo to the left and title in the center */
+    padding: 10px;
+    
+  }
+  
+  .logo-container {
+    margin-left: 20px; /* Space from left edge */
+  }
+  
+  .ooredoo-logo {
+    width: 200px;
+    height: auto;
+  }
+  
+  .header-title {
+    text-align: center; /* Center the title */
+    flex-grow: 1; /* Allow title to take up available space */
+    color: rgb(8, 8, 8);
+  }
+  
+  /* Chat container */
+  .chat-container {
+    width: 400px; /* Set a fixed width */
+    max-width: 100%; /* Ensure it doesn't overflow */
+    height: 500px; /* Adjust height as needed */
+    margin: 20px auto; /* Center the chat container */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 10px; /* Optional: round the corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow */
+  }
+  
+  .messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 10px;
+  }
+  
+  /* Messenger-style message bubbles */
+  .message {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .user-message {
+    justify-content: flex-end;
+  }
+  
+  .bot-message {
+    justify-content: flex-start;
+  }
+  
+  .user-icon,
+  .bot-icon {
+    margin: 0 10px;
+  }
+  
+  .message-bubble {
+    max-width: 60%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .user-message .message-bubble {
+    background-color: #0088cc;
+    color: white;
+    border-bottom-right-radius: 0;
+  }
+  
+  .bot-message .message-bubble {
+    background-color: #e5e5ea;
+    color: black;
+    border-bottom-left-radius: 0;
+  }
+  
+  /* Input container */
+  .input-container {
+    display: flex;
+    padding: 10px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+  }
+  
+  input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  
