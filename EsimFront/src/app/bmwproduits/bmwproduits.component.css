@@ -1,0 +1,27 @@
+.scroll-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px; /* Taille de la flèche */
+    cursor: pointer;
+    margin: 0 10px; /* Espacement autour des boutons */
+}
+
+.scrollable-list {
+    display: flex;
+    padding: 10px 0;
+    overflow: hidden; /* Cache la barre de défilement */
+}
+
+.scrollable-list .card {
+    min-width: 200px;
+    margin-right: 15px;
+    flex: 0 0 auto;
+}
+
+
+
+/* Taille uniforme des images */
+.card-img-top {
+    height: 150px;
+    object-fit: cover;
+}

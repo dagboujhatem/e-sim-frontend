@@ -51,17 +51,30 @@
         <img src="https://dwglogo.com/wp-content/uploads/2016/04/1453x1000-ooredo.png" alt="Logo Ooredoo" class="logo">
         <h1>Hello Ooredoo</h1>
     </div>
-
+<!-- Conteneur principal pour centrer la vidéo et le paragraphe -->
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; margin-top: -7em;">
     <!-- Vidéo -->
-    <div class="video-container">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/GHNAnHW3s0Y" frameborder="0" allowfullscreen></iframe>
+    <div class="video-container" style="display: flex; justify-content: center; width: 100%;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/GHNAnHW3s0Y" frameborder="0" allowfullscreen></iframe>
     </div>
+    
+    <!-- Paragraphe sur l'eSIM avec Bouton, centré sous la vidéo -->
+    <div class="paragraph" style="margin-top: 20px; text-align: center;">
+        <p>Découvrez l'eSIM, une nouvelle façon de se connecter sans avoir besoin de carte SIM physique.</p>
+        <button class="btn btn-danger" (click)="goToOtp()">Start</button>
+    </div>
+</div>
 
-    <!-- Paragraphe sur l'eSIM avec Bouton -->
-    <div class="paragraph">
-        <p>Découvrez l'eSIM, une nouvelle façon de se connecter sans avoir besoin de carte SIM physique. </p>
-        <button class="btn btn-danger" (click)="goToOtp()">Start</button> 
-    </div>
+  <a class="btn btn-sm custom-red-btn" [href]="'tel:+21653840760'">
+        <i class="fa fa-phone"></i> Call Us
+    </a>
+    
+    <a class="btn btn-sm custom-red-btn" [href]="'mailto:sirineweslati123@gmail.com'">
+        <i class="fa fa-envelope-open"></i> Contact Us
+    </a>
+    
+    <!-- Bouton pour ouvrir la recherche Google Maps dans un nouvel onglet -->
+<button (click)="openGoogleMapsSearch()">Voir Boutiques Ooredoo sur Google Maps</button>
 
 </body>
 </html>

@@ -1,0 +1,34 @@
+<!-- src/app/components/otp/otp.component.html -->
+
+<div class="container">
+  <!-- Logo Ooredoo en haut à gauche -->
+  <div class="logo-container">
+    <img src="https://dwglogo.com/wp-content/uploads/2016/04/1453x1000-ooredo.png" alt="Ooredoo Logo" class="ooredoo-logo">
+  </div>
+
+  <!-- Formulaire centré -->
+  <div class="form-container">
+    <div *ngIf="message" class="alert" [ngClass]="{'alert-success': success, 'alert-danger': !success}" role="alert">
+      <i [ngClass]="{'fa fa-check-circle': success, 'fa fa-times-circle': !success}"></i>
+      {{ message }}
+    </div>
+
+    <h2 class="form-title">Envoyer OTP</h2>
+    <form (ngSubmit)="submit()" class="otp-form">
+      <div class="form-group">
+        <label for="number">Numéro de téléphone :</label>
+        <input type="text" id="number" [(ngModel)]="otpData.number" name="number" class="form-control" placeholder="Entrez votre numéro de téléphone" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email :</label>
+        <input type="email" id="email" [(ngModel)]="otpData.email" name="email" class="form-control" placeholder="Entrez votre email" required />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-submit">Envoyer</button>
+    </form>
+  </div>
+</div>
+
+
+  

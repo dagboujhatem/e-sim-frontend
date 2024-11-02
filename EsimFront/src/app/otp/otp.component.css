@@ -1,0 +1,99 @@
+/* Centrer le formulaire dans la page */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+    position: relative;
+  }
+  
+  /* Style du logo */
+  .logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .ooredoo-logo {
+    width: 150px;
+    height: auto;
+  }
+  
+  /* Conteneur du formulaire */
+  .form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Titre du formulaire */
+  .form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #cc0033; /* Couleur Ooredoo */
+  }
+  
+  /* Styles des éléments du formulaire */
+  .otp-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .btn-submit {
+    width: 100%;
+    background-color: #cc0033; /* Couleur Ooredoo */
+    border-color: #cc0033;
+  }
+  
+  .btn-submit:hover {
+    background-color: #a80028; /* Couleur Ooredoo plus sombre */
+    border-color: #a80028;
+  }
+  
+  /* Barre de message animée */
+  .alert {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .alert-success {
+    background-color: #28a745;
+    color: white;
+    opacity: 1;
+  }
+  
+  .alert-danger {
+    background-color: #dc3545;
+    color: white;
+    opacity: 1;
+  }
+  
+  /* Icônes */
+  .alert i {
+    margin-right: 10px;
+  }
+  
+  /* Animation d'apparition de la barre */
+  .alert.show {
+    opacity: 1;
+  }
+  

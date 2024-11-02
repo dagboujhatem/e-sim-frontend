@@ -1,0 +1,14 @@
+/* profile.component.css */
+.profile-container {
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .success {
+    color: green;
+  }
+  
+  .error {
+    color: red;
+  }
+  

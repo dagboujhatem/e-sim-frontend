@@ -1,0 +1,80 @@
+.qr-code-container {
+    margin: 20px;
+    padding: 20px; /* Espacement interne */
+    border: 1px solid #e0e0e0; /* Bordure légère */
+    border-radius: 10px; /* Coins arrondis */
+    background-color: #ffffff; /* Couleur de fond blanche */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    text-align: center; /* Centrer le texte dans le conteneur */
+  }
+  
+  .header {
+    display: flex; /* Flexbox pour alignement */
+    justify-content: flex-start; /* Garder le logo à gauche */
+    align-items: center; /* Alignement vertical */
+  }
+  
+  .ooredoo-logo {
+    width: 200px; /* Ajustez la taille du logo */
+    height: auto; /* Garder les proportions */
+    margin-right: 20px; /* Espacement à droite du logo */
+  }
+  
+  
+  .title {
+    margin-top: 20px; /* Espacement au-dessus du titre */
+    font-size: 1.5em; /* Taille du titre */
+    color: #d50000; /* Couleur rouge Ooredoo */
+  }
+  
+  .btn-generate {
+    background-color: #d50000; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    padding: 10px 20px; /* Espacement interne du bouton */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de pointeur */
+    transition: background-color 0.3s; /* Transition pour effet de survol */
+  }
+  
+  .btn-generate:hover {
+    background-color: #b30000; /* Couleur au survol */
+  }
+  
+  .qr-code img {
+    width: 200px; /* Ajustez la taille si nécessaire */
+    height: 200px; /* Ajustez la taille si nécessaire */
+    margin: 10px 0; /* Marges verticales autour du QR code */
+  }
+  
+  .footer {
+    margin-top: 20px; /* Espacement au-dessus du pied de page */
+    color: #555; /* Couleur du texte */
+    display: flex; /* Utiliser flexbox pour aligner le texte et l'icône */
+    justify-content: space-between; /* Espace entre le texte et l'icône */
+    align-items: center; /* Aligner verticalement */
+    position: absolute; /* Positionner l'icône de commentaire */
+    bottom: 10px; /* Positionné en bas du conteneur */
+    right: 10px; /* Positionné à droite du conteneur */
+  }
+  
+  .comment-icon {
+    background: none; /* Supprimer le fond */
+    border: none; /* Supprimer la bordure */
+    cursor: pointer; /* Curseur de pointeur */
+    display: flex; /* Utiliser flexbox pour aligner l'icône et le texte */
+    flex-direction: column; /* Afficher l'icône au-dessus du texte */
+    align-items: center; /* Centrer le contenu */
+  }
+  
+  .comment-icon-img {
+    width: 40px; /* Ajustez la taille de l'icône */
+    height: 40px; /* Ajustez la taille de l'icône */
+  }
+  
+  .feedback-text {
+    font-size: 14px; /* Taille de la police du texte */
+    color: #d50000; /* Couleur du texte */
+    margin-top: 5px; /* Espacement au-dessus du texte */
+  }
+  

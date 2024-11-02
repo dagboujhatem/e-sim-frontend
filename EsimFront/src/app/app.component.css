@@ -41,5 +41,36 @@ video {
     height: auto; /* Hauteur automatique pour maintenir le ratio */
     border-radius: 8px; /* Coins arrondis pour la vidéo */
 }
+.custom-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.spacer {
+    flex: 1;
+}
 
+.mat-toolbar .d-flex {
+    margin-right: 10px; /* Ajustez cet espace selon vos besoins */
+}
+/* styles.css */
+
+/* Par défaut (clair) */
+/* styles.css ou un fichier CSS global */
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+body.light {
+    background-color: white;
+    color: black;
+  }
+  
+body.dark {
+    background-color: black;
+    color: white;
+  }
+  
+  
+  
