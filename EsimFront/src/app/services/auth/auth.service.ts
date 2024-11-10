@@ -48,13 +48,4 @@ constructor(private http: HttpClient, private userStorageService: UserStorageSer
   register ( signupRequest:any):Observable<any>{
      return this.http.post(BASIC_URL+ "sign-up", signupRequest);
   }
-  // Méthode de mise à jour dans AuthService
-   updateProfile(updateData: ProfileUpdateRequest): Observable<any> {
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`  // Assurez-vous que le token est stocké dans le localStorage
-  });
-  
-  return this.http.put(BASIC_URL+ "update-profile", updateData, { headers });
-}
-
 }
