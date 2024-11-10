@@ -24,7 +24,6 @@ export class CommentComponent implements OnInit {
         this.comments = data; // Assignez les données à la variable de commentaires
       },
       (error) => {
-        console.error('Erreur lors du chargement des commentaires', error);
       }
     );
   }
@@ -43,7 +42,6 @@ export class CommentComponent implements OnInit {
         this.loadComments(); // Rechargez les commentaires après ajout
       },
       (error) => {
-        console.error('Erreur lors de l\'ajout du commentaire', error);
       }
     );
   }

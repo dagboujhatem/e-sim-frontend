@@ -30,7 +30,6 @@ export class QrCodeComponent implements OnInit {
         this.loading = false; // Terminer le chargement
       },
       error: (err) => {
-        console.error('Error generating QR code', err);
         this.loading = false; // Terminer le chargement en cas d'erreur
       }
     });
@@ -43,7 +42,6 @@ export class QrCodeComponent implements OnInit {
         alert('QR Code envoyé avec succès !'); // Vous pouvez afficher une notification ou un message ici
       },
       error => {
-        console.error('Erreur lors de l\'envoi du QR Code:', error);
         alert('Erreur lors de l\'envoi du QR Code.'); // Afficher un message d'erreur
       }
     );

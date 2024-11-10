@@ -26,7 +26,6 @@ export class ChatDialogComponent implements OnInit {
           this.formValue = '';  // Clear the input after message is sent
         })
         .catch(err => {
-          console.error('Error sending message:', err);
         });
     }
   }

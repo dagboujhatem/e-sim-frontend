@@ -57,7 +57,6 @@ export class ChatService {
         }
       })
       .catch(err => {
-        console.error('Error occurred while sending request:', err);
       });
   }
 }

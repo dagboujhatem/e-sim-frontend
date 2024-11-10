@@ -52,7 +52,6 @@ onSubmit(): void {
         this.router.navigateByUrl('/dashbord');}
     },
     (error: HttpErrorResponse) => { // Spécifiez le type de 'error'
-      console.error('Login failed:', error); // Affiche l'erreur dans la console
       this.snackeBar.open('Bad Credentials.', 'ERROR', { duration: 5000 });
     }
   );
