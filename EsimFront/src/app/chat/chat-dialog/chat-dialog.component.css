@@ -99,5 +99,15 @@
     font-size: 16px;
     outline: none;
   }
+  .send-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007bff; /* Couleur de l'icône */
+    font-size: 20px; /* Taille de l'icône */
+  }
   
+  .send-button:hover {
+    color: #0056b3; /* Couleur de l'icône au survol */
+  }
   

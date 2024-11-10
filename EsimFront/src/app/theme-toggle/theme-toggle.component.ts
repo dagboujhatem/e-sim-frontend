@@ -6,7 +6,7 @@ import { ThemeService } from '../services/theme.service';
   template: `
     <label>
       <input type="checkbox" (change)="toggleTheme($event)" [checked]="isDarkTheme" />
-      Activer le thème sombre
+      Dark Mode
     </label>
   `,
   styles: [

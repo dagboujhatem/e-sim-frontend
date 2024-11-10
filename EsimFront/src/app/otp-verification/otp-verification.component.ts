@@ -29,14 +29,14 @@ export class OtpVerificationComponent {
        // Appeler la méthode pour gérer le succès
        this.showAlert(); // Afficher le message d'erreur
        setTimeout(() => {
-         this.router.navigate(['/Qr_code']); // Remplacez '/home' par le chemin de votre page d'accueil
+         this.router.navigate(['/Qr_code',this.otpData.otpCode]); // Remplacez '/home' par le chemin de votre page d'accueil
        }, 3000);
     } else {
       this.message="Invalid or expired OTP.";
      // Appeler la méthode pour gérer le succès
         this.showAlert(); // Afficher le message d'erreur
          setTimeout(() => {
-        this.router.navigate(['/home']); // Remplacez '/home' par le chemin de votre page d'accueil
+        this.router.navigate(['/otp']); // Remplacez '/home' par le chemin de votre page d'accueil
           }, 3000);
       }
   },
@@ -45,7 +45,7 @@ export class OtpVerificationComponent {
     this.success = false; 
     this.showAlert(); // Afficher le message d'erreur
       setTimeout(() => {
-        this.router.navigate(['/home']); // Remplacez '/home' par le chemin de votre page d'accueil
+        this.router.navigate(['/otp']); // Remplacez '/home' par le chemin de votre page d'accueil
       }, 3000);
   }
 );

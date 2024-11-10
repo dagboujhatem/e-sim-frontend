@@ -1,3 +1,16 @@
+.container {
+    background-color: #f8f9fa; /* Arrière-plan clair pour la section */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+   h3 {
+    color: #ff0022; /* Couleur des titres */
+  }
+  h2 {
+    color: #130507; /* Couleur des titres */
+  }
 .scroll-button {
     background-color: transparent;
     border: none;

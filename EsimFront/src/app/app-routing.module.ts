@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'otp',component:OtpComponent },
   { path: 'verify-otp', component: OtpVerificationComponent },
   { path: 'stores', component: StoreMapComponent },
-  { path: 'Qr_code', component: QrCodeComponent },
+  { path: 'Qr_code/:otpCode', component: QrCodeComponent },
   { path: 'commentaire', component:CommentComponent },
   { path: 'login', component:LoginComponent},
   { path: 'signup', component:SignupComponent },

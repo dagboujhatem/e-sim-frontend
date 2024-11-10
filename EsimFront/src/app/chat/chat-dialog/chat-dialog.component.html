@@ -2,7 +2,7 @@
     <div class="logo-container">
       <img class="ooredoo-logo" src="https://dwglogo.com/wp-content/uploads/2016/04/1453x1000-ooredo.png" alt="Ooredoo Logo">
     </div>
-    <h1 class="header-title">Enjoy your experience with ChatBot</h1>
+    <h2 class="header-title">Enjoy your experience with ChatBot</h2>
   </div>
   
   <div class="chat-container">
@@ -17,7 +17,15 @@
     </div>
     
     <div class="input-container">
-      <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" placeholder="Type your message here..." />
+      <input
+        [(ngModel)]="formValue"
+        (keyup.enter)="sendMessage()"
+        placeholder="Type your message here..."
+        class="message-input"
+      />
+        <button class="btn btn-primary send-button" (click)="sendMessage()">
+        <i class="bi bi-send"></i>
+      </button>
     </div>
   </div>
   

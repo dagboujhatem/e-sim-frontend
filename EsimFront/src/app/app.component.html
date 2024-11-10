@@ -20,7 +20,11 @@
         </div>
         <span class="spacer"></span>
         <div class="d-flex align-items-center">
-            <button mat-button routerLinkActive="active" (click)="logout()">LogOut</button>
+            
+            <button mat-button routerLink="/gpt" routerLinkActive="active" class="ms-2">
+                <mat-icon>chat</mat-icon> ChatBot
+              </button>
+              
             <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
                 <mat-icon>settings</mat-icon>
             </button>
@@ -29,6 +33,7 @@
               <app-theme-toggle></app-theme-toggle> 
 
             </mat-menu>
+            <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
         </div>
     </mat-toolbar>
 </div>

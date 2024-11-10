@@ -7,15 +7,21 @@ import { Observable } from 'rxjs'; // Ajoutez cette ligne
 export class QrCodeService {
   constructor(private http: HttpClient) { }
   private baseUrl = 'http://localhost:8443/esimback'; // Remplacez par l'URL de votre backend
-  generateQrCode(text: string) {
-    return this.http.get(`http://localhost:8443/esimback/generate-qr-code?text=${text}`, {
+  generateQrCode(activateUrl: string) {
+    return this.http.post(`http://localhost:8443/esimback/generate-qr-code`,{activateUrl},
+   {
       responseType: 'blob',
     });
   }
-  sendQrCodeAsImage(emailText: string): Observable<string> {
-    return this.http.get(`${this.baseUrl}/send-qr-code-image?text=${encodeURIComponent(emailText)}`, {
+  sendQrCodeAsImage(qrCodelink: string,otp_id:string|null): Observable<string> {
+    return this.http.post(`${this.baseUrl}/send-qr-code-image/${otp_id}`,{qrCodelink} ,{
       responseType: 'text'
     });
+}
+sendConfirmationEmail(otp_id:string): Observable<string> {
+  return this.http.get(`${this.baseUrl}/activate-esim-and-send-confirmation-email/${otp_id}`, {
+    responseType: 'text'
+  });
 }
 
   

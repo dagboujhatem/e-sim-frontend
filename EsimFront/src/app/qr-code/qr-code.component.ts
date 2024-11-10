@@ -1,21 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { QrCodeService } from '../qr-code.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+
 @Component({
   selector: 'app-qr-code',
   templateUrl: './qr-code.component.html',
   styleUrl: './qr-code.component.css'
 })
-export class QrCodeComponent {
+export class QrCodeComponent implements OnInit {
+  otpCode : string  | null = null;
   qrCodeUrl: string | null = null; // URL pour le QR code
   loading: boolean = false; // État de chargement
-  constructor(private qrCodeService: QrCodeService , private router: Router) {}
+  private baseUrl = 'http://localhost:8443/esimback';
+  constructor(private qrCodeService: QrCodeService , private router: Router, private activatedRoute : ActivatedRoute) {}
+  ngOnInit() {
+     this.activatedRoute.paramMap.subscribe((params: ParamMap )=> {
+          this.otpCode = params.get('otpCode');     
+    });
+  }
 
   generateQrCode() {
-    const message = 'Congrats! your esim is activated, enjoy your experience with esim service.'; // Message à encoder
+    const activatedEsimUrl = `${this.baseUrl}/activate-esim-and-send-confirmation-email/${this.otpCode}`; // Message à encoder
     this.loading = true; // Démarrer le chargement
 
-    this.qrCodeService.generateQrCode(message).subscribe({
+    this.qrCodeService.generateQrCode(activatedEsimUrl).subscribe({
       next: (blob) => {
         const url = window.URL.createObjectURL(blob); // Créer une URL à partir du blob
         this.qrCodeUrl = url; // Assignation de l'URL du QR code
@@ -28,8 +36,8 @@ export class QrCodeComponent {
     });
   }
   sendQrCode() {
-    const qrCodeText = 'https://www.ooredoo.tn/Personal/fr/content/409-qu-est-ce-que-l-esim-'; // Mettez le texte que vous souhaitez encoder
-    this.qrCodeService.sendQrCodeAsImage(qrCodeText).subscribe(
+    const qrCodelink = `${this.baseUrl}/activate-esim-and-send-confirmation-email/${this.otpCode}`; // Mettez le texte que vous souhaitez encoder
+    this.qrCodeService.sendQrCodeAsImage(qrCodelink,this.otpCode).subscribe(
       response => {
         console.log('QR Code envoyé avec succès:', response);
         // Ne redirigez pas vers une autre page ici

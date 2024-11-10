@@ -56,4 +56,5 @@ constructor(private http: HttpClient, private userStorageService: UserStorageSer
   
   return this.http.put(BASIC_URL+ "update-profile", updateData, { headers });
 }
+
 }

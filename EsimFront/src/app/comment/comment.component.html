@@ -9,7 +9,7 @@
   </div>
 
   <!-- Titre Commentaires -->
-  <h2>Commentaires</h2>
+  <h2>Comments</h2>
 
   <!-- Formulaire pour ajouter un commentaire -->
   <div class="comment-form">
@@ -21,7 +21,7 @@
 
     <!-- Section pour choisir l'évaluation avec des étoiles et le bouton Ajouter -->
     <div class="stars-container">
-      <label for="stars">Évaluation :</label>
+      <label for="stars">Evaluation :</label>
       <div class="stars-selection">
         <span
           *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
@@ -32,13 +32,13 @@
           &#9733;
         </span>
       </div>
-      <button class="add-comment-button" (click)="addComment()">Ajouter Commentaire</button>
+      <button class="add-comment-button" (click)="addComment()">Add Comment</button>
     </div>
   </div>
 
   <!-- Liste des commentaires -->
   <div class="comments-list">
-    <h3>Commentaires précédents</h3>
+    <h3>Previous Comments</h3>
     <div *ngFor="let comment of comments" class="comment-item">
       <p><strong>{{ comment.userEmail }}</strong></p>
       <div class="stars-display">

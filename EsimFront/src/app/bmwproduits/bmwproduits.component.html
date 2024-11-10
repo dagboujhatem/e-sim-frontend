@@ -1,8 +1,7 @@
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Produits BMW</h2>
-  
+    <h2 class="text-center mb-4">BMW Products</h2>
     <!-- Liste horizontale pour les voitures neuves -->
-    <h3>Voitures Neuves</h3>
+    <h3>New Cars</h3>
     <div class="d-flex align-items-center">
         <button class="scroll-button left" (click)="scrollLeft('voituresNeuvesList')">&#10094;</button>
         <div class="scrollable-list" id="voituresNeuvesList">
@@ -18,7 +17,7 @@
     </div>
   
     <!-- Répétez le même schéma pour les voitures d'occasion et les accessoires -->
-    <h3 class="mt-5">Voitures d'Occasion</h3>
+    <h3 class="mt-5">Used Cars</h3>
     <div class="d-flex align-items-center">
         <button class="scroll-button left" (click)="scrollLeft('voituresOccasionList')">&#10094;</button>
         <div class="scrollable-list" id="voituresOccasionList">
@@ -33,7 +32,7 @@
         <button class="scroll-button right" (click)="scrollRight('voituresOccasionList')">&#10095;</button>
     </div>
   
-    <h3 class="mt-5">Accessoires d'Origine BMW</h3>
+    <h3 class="mt-5">Genuine BMW Accessories</h3>
     <div class="d-flex align-items-center">
         <button class="scroll-button left" (click)="scrollLeft('accessoiresList')">&#10094;</button>
         <div class="scrollable-list" id="accessoiresList">
@@ -62,8 +61,8 @@
                     <p>{{selectedOffer?.description}}</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success">Acheter</button>
-                    <button type="button" class="btn btn-secondary" (click)="fermerModal()">Fermer</button>
+                    <button type="button" class="btn btn-success" (click)="payNow(selectedOffer?.prix)">Pay</button>
+                    <button type="button" class="btn btn-secondary" (click)="fermerModal()">Close</button>
                 </div>
             </div>
         </div>
