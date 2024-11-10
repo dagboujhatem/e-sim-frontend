@@ -39,7 +39,6 @@ export class QrCodeComponent implements OnInit {
     const qrCodelink = `${this.baseUrl}/activate-esim-and-send-confirmation-email/${this.otpCode}`; // Mettez le texte que vous souhaitez encoder
     this.qrCodeService.sendQrCodeAsImage(qrCodelink,this.otpCode).subscribe(
       response => {
-        console.log('QR Code envoyé avec succès:', response);
         // Ne redirigez pas vers une autre page ici
         alert('QR Code envoyé avec succès !'); // Vous pouvez afficher une notification ou un message ici
       },

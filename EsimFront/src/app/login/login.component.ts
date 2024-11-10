@@ -48,9 +48,7 @@ onSubmit(): void {
   // Appel au service d'authentification
   this.authService.login(username, password).subscribe(
     (response:User) => {
-      console.log('Login successful:', response); // Affiche la réponse dans la console
-
-      if (UserStorageService.isLoggedIn()) {
+         if (UserStorageService.isLoggedIn()) {
         this.router.navigateByUrl('/dashbord');}
     },
     (error: HttpErrorResponse) => { // Spécifiez le type de 'error'

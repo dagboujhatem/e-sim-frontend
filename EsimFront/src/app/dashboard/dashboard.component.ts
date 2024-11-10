@@ -79,11 +79,9 @@ payNow(amount: number) {
     key: 'pk_test_51MyjRmG1Pb689ekQXSnaNb3T5zlM4AtWEw9ilaAeGxy07b4tVsjUyEqek0oRllNtoEhFkZ6TSx6JY6lww6sQTM5s00LO1tBdGY',
     locale: 'auto',
     token: function (token: any) {
-      console.log(token);
       alert(`The payment has been processed successfully!`);
     },
     closed: () => {
-      console.log('Payment window closed');
     }
   });
 
@@ -101,19 +99,15 @@ loadStripe() {
     s.type = "text/javascript";
     s.src = "https://checkout.stripe.com/checkout.js";
     s.onload = () => {
-      console.log('Stripe script loaded successfully');
       this.handler = (<any>window).StripeCheckout.configure({
         key: 'pk_test_51MyjRmG1Pb689ekQXSnaNb3T5zlM4AtWEw9ilaAeGxy07b4tVsjUyEqek0oRllNtoEhFkZ6TSx6JY6lww6sQTM5s00LO1tBdGY',
         locale: 'auto',
         token: (token: any) => {
-          console.log(token);
           alert('Payment Success!!');
         }
       });
     };
     window.document.body.appendChild(s);
-  } else {
-    console.log('Stripe script already loaded');
   }
 }
 }

@@ -31,7 +31,6 @@ export class ProfileComponent {
     this.http.put('http://localhost:8443/update-profile', profileData, { headers })
       .subscribe(
         response => {
-          console.log('Profile updated successfully', response);
           this.updateSuccess = true; // Afficher le message de succès
           this.updateError = null; // Réinitialiser le message d'erreur
         },

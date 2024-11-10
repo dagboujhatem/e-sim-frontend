@@ -38,7 +38,6 @@ export class CommentComponent implements OnInit {
 
     this.commentService.addComment(this.newComment, this.stars).subscribe(
       (response) => {
-        console.log('Commentaire ajouté avec succès', response);
         this.newComment = ''; // Réinitialisez le champ de commentaire
         this.stars = 0; // Réinitialisez le nombre d'étoiles
         this.loadComments(); // Rechargez les commentaires après ajout
