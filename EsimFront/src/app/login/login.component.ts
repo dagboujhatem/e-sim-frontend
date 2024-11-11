@@ -42,11 +42,11 @@ onSubmit(): void {
     return;
   }
 
-  const username = this.loginForm.get('email')!.value;
+  const email = this.loginForm.get('email')!.value;
   const password = this.loginForm.get('password')!.value;
 
   // Appel au service d'authentification
-  this.authService.login(username, password).subscribe(
+  this.authService.login(email, password).subscribe(
     (response:User) => {
          if (UserStorageService.isLoggedIn()) {
         this.router.navigateByUrl('/dashbord');}

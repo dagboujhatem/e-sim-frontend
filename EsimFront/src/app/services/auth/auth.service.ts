@@ -18,28 +18,15 @@ export class AuthService {
 
 constructor(private http: HttpClient, private userStorageService: UserStorageService) {}
 
-  login(username: string, password: string): any {
+  login(email: string, password: string): any {
     const headers = new HttpHeaders().set('Content-Type', 'application/json'); // Définit le type de contenu
-    const body = { username, password }; // Crée le corps de la requête
+    const body = { email, password }; // Crée le corps de la requête
 
     return this.http.post(BASIC_URL + "authenticate", body, { headers, observe: 'response' }).pipe(
-      map((res) => {
-        // Récupère l'en-tête d'autorisation
-        const authorizationHeader = res.headers.get('authorization');
-
-        // Vérifie si l'en-tête d'autorisation n'est pas null
-        if (authorizationHeader) {
-          const token = authorizationHeader.substring(6); // Extrait le token (en retirant "Bearer ")
-          const user = res.body; // Récupère l'utilisateur
-
-          if (token && user) { // Vérifie que le token et l'utilisateur existent
-            this.userStorageService.saveToken(token); // Enregistre le token
-            this.userStorageService.saveUser(user); // Enregistre les détails de l'utilisateur
-            return true; // Indique que la connexion a réussi
-          }
-        }
-
-        return false; // Indique que la connexion a échoué
+      map((res:any) => {
+        this.userStorageService.saveToken(res.body.token); // Enregistre le token
+        this.userStorageService.saveUser(res.body.userId); // Enregistre les détails de l'utilisateur
+        return true;// Indique que la connexion a réussi
       })
     );
   }

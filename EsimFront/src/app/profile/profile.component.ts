@@ -39,6 +39,7 @@ export class ProfileComponent implements OnInit {
         response => {
           this.updateSuccess = true; // Afficher le message de succès
           this.updateError = null; // Réinitialiser le message d'erreur
+          this.router.navigate(['/dashbord']); 
         },
         error => {
           this.updateError = 'Erreur lors de la mise à jour du profil. Veuillez réessayer.'; // Afficher le message d'erreur
