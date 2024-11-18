@@ -17,7 +17,7 @@ export class AppComponent {
     {route:'/gpt',title:'ChatGPT',icon:'chat'},
   ]
   currentAction :any;
-  isDarkTheme = localStorage.getItem('theme') === 'dark';
+  isDarkTheme: boolean = false;
   constructor(private router: Router,private themeService: ThemeService){}
   handleRoute(action:any){
     this.currentAction+action ;
@@ -39,12 +39,19 @@ export class AppComponent {
   navigateToSettings() {
     this.router.navigate(['/editProfile']); // Redirige vers la page de modification de profil
   }
-  toggleTheme(event: Event): void {
-    this.isDarkTheme = (event.target as HTMLInputElement).checked;
-    this.themeService.toggleTheme(this.isDarkTheme);
-    localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light'); // Enregistrement du thème dans localStorage
+   // Méthode pour basculer le thème et actualiser l'interface
+   toggleTheme() {
+    this.themeService.toggleTheme();
+   document.body.classList.toggle('dark-theme', this.themeService.darkThemeEnabled);
   }
-  anotherAction(event: Event) {
-    this.toggleTheme(event);
+
+  // Obtenir le texte du bouton selon le thème actuel
+  get themeToggleText(): string {
+    return this.themeService.darkThemeEnabled ? ' Activate Light Theme'
+     : ' Activate Dark Theme';
   }
+  get themeIcon(): string {
+    return this.isDarkTheme ? 'wb_sunny' : 'brightness_3'; // Soleil ou croissant
+  }
+  
 }

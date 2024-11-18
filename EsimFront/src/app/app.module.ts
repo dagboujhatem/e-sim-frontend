@@ -26,7 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BmwproduitsComponent } from './bmwproduits/bmwproduits.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouterModule } from '@angular/router';
-import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
+import { CategorieComponent } from './categorie/categorie.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 
@@ -46,7 +47,9 @@ import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
     DashboardComponent,
     BmwproduitsComponent,
     ProfileComponent,
-    ThemeToggleComponent,
+    CategorieComponent,
+    ForgetPasswordComponent,
+    
    
     
   ],

@@ -10,6 +10,7 @@ import { ProfileService } from '../services/profile.service';
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
+  message: string | null = null;
   updateSuccess: boolean = false;
   updateError: string | null = null;
   constructor(private fb: FormBuilder, private profileService : ProfileService,private router: Router) {
@@ -39,10 +40,10 @@ export class ProfileComponent implements OnInit {
         response => {
           this.updateSuccess = true; // Afficher le message de succès
           this.updateError = null; // Réinitialiser le message d'erreur
-          this.router.navigate(['/dashbord']); 
+          this.message="Profile updated successfully";
         },
         error => {
-          this.updateError = 'Erreur lors de la mise à jour du profil. Veuillez réessayer.'; // Afficher le message d'erreur
+          this.updateError = 'Error updating profile. Please try again.'; // Afficher le message d'erreur
           this.updateSuccess = false; // Réinitialiser le message de succès
         }
       );

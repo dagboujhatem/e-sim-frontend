@@ -5,9 +5,9 @@
     height: 100vh;
 }
 mat-card{
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
-    padding: 20px;
+    padding: 50px;
     @media screen and (max-width:500px) {
           max-width: 90%;
     }   
@@ -41,7 +41,19 @@ button{
 .error-snackbar{
     background-color: #f44336 !important;
 }
-
+.ooredoo-button {
+    margin-right: 10px; /* Ajoute un espace à droite du premier bouton */
+    margin-bottom: 10px;
+  }
+  .ooredoo-link {
+    font-size: 12px; /* Petite taille de texte */
+    text-transform: none; /* Ne pas mettre en majuscules */
+    padding: 0; /* Enlève les marges internes supplémentaires */
+    display: inline; /* Se comporte comme un lien (élément en ligne) */
+    color: inherit; /* Hérite de la couleur du texte environnant (pour ressembler à un lien classique) */
+  }
+  
+  
 
 
 

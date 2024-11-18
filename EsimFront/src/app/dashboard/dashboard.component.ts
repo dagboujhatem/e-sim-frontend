@@ -110,4 +110,7 @@ loadStripe() {
     window.document.body.appendChild(s);
   }
 }
+navigateToProduits() {
+  this.router.navigate(['/produits']); // Redirige vers la page des produits BMW
+}
 }

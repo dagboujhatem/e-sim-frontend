@@ -16,7 +16,7 @@
     <mat-toolbar class="custom-toolbar">
         <div class="d-flex align-items-center">
             <button mat-button routerLink="/dashbord" routerLinkActive="active">User Dashboard</button>
-            <button mat-button routerLink="/otp" routerLinkActive="active" class="ms-2">OTP</button>
+            <button mat-button routerLink="/otp" routerLinkActive="active" class="ms-2">Activate Esim</button>
         </div>
         <span class="spacer"></span>
         <div class="d-flex align-items-center">
@@ -29,10 +29,13 @@
                 <mat-icon>settings</mat-icon>
             </button>
             <mat-menu #settingsMenu="matMenu">
-                <button mat-menu-item (click)="navigateToSettings()">Edit Profil</button>
-              <app-theme-toggle></app-theme-toggle> 
-
-            </mat-menu>
+                <button mat-menu-item (click)="navigateToSettings()"><mat-icon>person</mat-icon>Edit Profil</button>
+                <button mat-menu-item (click)="toggleTheme()">
+                    <mat-icon>{{ themeIcon }}</mat-icon>
+                    {{ themeToggleText }}
+                  </button>
+                  
+              </mat-menu>              
             <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
         </div>
     </mat-toolbar>

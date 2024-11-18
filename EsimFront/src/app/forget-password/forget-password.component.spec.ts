@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ThemeToggleComponent } from './theme-toggle.component';
+import { ForgetPasswordComponent } from './forget-password.component';
 
-describe('ThemeToggleComponent', () => {
-  let component: ThemeToggleComponent;
-  let fixture: ComponentFixture<ThemeToggleComponent>;
+describe('ForgetPasswordComponent', () => {
+  let component: ForgetPasswordComponent;
+  let fixture: ComponentFixture<ForgetPasswordComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ThemeToggleComponent]
+      declarations: [ForgetPasswordComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ThemeToggleComponent);
+    fixture = TestBed.createComponent(ForgetPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

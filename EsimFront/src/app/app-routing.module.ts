@@ -13,7 +13,8 @@ import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BmwproduitsComponent } from './bmwproduits/bmwproduits.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
+import { CategorieComponent } from './categorie/categorie.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent} , // Votre page d'accueil
   {path:'gpt', component:ChatDialogComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path:'dashbord',component:DashboardComponent},
   {path:'bmw-products',component:BmwproduitsComponent},
   {path:'editProfile',component:ProfileComponent},
-  {path:'theme',component:ThemeToggleComponent},
+  {path:'produits',component:CategorieComponent},
+  {path:'forgetPassword',component:ForgetPasswordComponent},
   {path:'',redirectTo:'/home' ,pathMatch:'full'}
   
 ];

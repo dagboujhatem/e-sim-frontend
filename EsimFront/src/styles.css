@@ -1,4 +1,7 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import 'app/dark-theme.scss';
+@import 'app/light-theme.scss';
+
 
 html, body {
     height: 100%;
@@ -6,6 +9,10 @@ html, body {
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     text-size-adjust: 100%; /* Ajoutez ceci pour éviter les avertissements de compatibilité */
 }
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
 
 
 
