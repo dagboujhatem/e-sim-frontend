@@ -1,0 +1,28 @@
+<div class="qr-code-container">
+    <header class="header">
+      <img src="https://dwglogo.com/wp-content/uploads/2016/04/1453x1000-ooredo.png" alt="Ooredoo Logo" class="ooredoo-logo" />
+    </header>
+    
+    <h2 class="title">Generate a QR Code</h2>
+    
+    <button (click)="generateQrCode()" class="btn btn-generate" [disabled]="loading">
+      <span *ngIf="loading">Loading...</span>
+      <span *ngIf="!loading">Generate QR Code</span>
+    </button>
+    
+    <div *ngIf="qrCodeUrl" class="qr-code mt-4">
+      <img [src]="qrCodeUrl" alt="QR Code" />
+      <a href="javascript:void(0)" (click)="sendQrCode()">Send QR_Code</a>
+    </div>
+    <p>Scan the QR Code to display your message</p>
+    <footer class="footer">
+      <button type="button" class="btn btn-primary btn-submit" (click)="goToFeedbackPage()">
+        Make feedback
+      </button>
+    </footer>
+    
+  </div>
+  
+  
+  
+  

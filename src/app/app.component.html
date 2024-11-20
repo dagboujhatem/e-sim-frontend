@@ -1,0 +1,46 @@
+<div *ngIf="!isUserLoggedIn">
+    <nav class="p-3">
+        <ul class="nav nav-pills">
+            <li *ngFor="let action of actions">
+                <button 
+                    [ngClass]="action === currentAction ? 'btn btn-success ms-1' : 'btn btn-outline-success ms-1'"
+                    (click)="handleRoute(action)">
+                    {{ action.title }}
+                    <i class="bi bi-{{ action.icon }}"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div *ngIf="isUserLoggedIn">
+    <mat-toolbar class="custom-toolbar">
+        <div class="d-flex align-items-center">
+            <button mat-button routerLink="/dashbord" routerLinkActive="active">User Dashboard</button>
+            <button mat-button routerLink="/otp" routerLinkActive="active" class="ms-2">Activate Esim</button>
+        </div>
+        <span class="spacer"></span>
+        <div class="d-flex align-items-center">
+            
+            <button mat-button routerLink="/gpt" routerLinkActive="active" class="ms-2">
+                <mat-icon>chat</mat-icon> ChatBot
+              </button>
+              
+            <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+                <mat-icon>settings</mat-icon>
+            </button>
+            <mat-menu #settingsMenu="matMenu">
+                <button mat-menu-item (click)="navigateToSettings()"><mat-icon>person</mat-icon>Edit Profil</button>
+                <button mat-menu-item (click)="toggleTheme()">
+                    <mat-icon>{{ themeIcon }}</mat-icon>
+                    {{ themeToggleText }}
+                  </button>
+                  
+              </mat-menu>              
+            <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
+        </div>
+    </mat-toolbar>
+</div>
+
+
+
+<router-outlet></router-outlet>

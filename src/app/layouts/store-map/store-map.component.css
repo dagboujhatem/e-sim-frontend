@@ -1,0 +1,71 @@
+/* Styles globaux pour votre application */
+
+/* Réinitialiser les marges et le remplissage pour tous les éléments */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Assure que le padding et la bordure sont inclus dans la largeur et la hauteur */
+}
+
+/* Styles pour le corps de la page */
+body {
+  font-family: Arial, sans-serif; /* Police de base */
+  line-height: 1.6; /* Hauteur de ligne pour améliorer la lisibilité */
+  background-color: #f4f4f4; /* Couleur de fond douce */
+}
+
+/* Style pour le conteneur principal de l'application */
+app-root {
+  display: flex;
+  flex-direction: column; /* Aligne les éléments en colonne */
+  min-height: 100vh; /* Assure que le conteneur occupe au moins la hauteur de la fenêtre */
+}
+
+/* Styles pour la carte Google Maps */
+.map-container {
+  flex: 1; /* Prend l'espace disponible */
+  height: 60vh; /* Hauteur de la carte */
+  background-color: #eaeaea; /* Couleur de fond pour la carte (peut être transparent si vous préférez) */
+}
+
+/* Styles pour la section des boutiques */
+
+/* Styles pour les titres dans la section des boutiques */
+.stores-section h2 {
+  font-size: 24px; /* Taille de la police pour le titre */
+  margin-bottom: 10px; /* Marge en bas du titre */
+}
+
+/* Styles pour le bouton */
+.stores-section button {
+  padding: 10px 15px; /* Remplissage pour le bouton */
+  background-color: #ff2a1b; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte du bouton */
+  border: none; /* Supprime la bordure par défaut */
+  border-radius: 5px; /* Coins arrondis pour le bouton */
+  cursor: pointer; /* Change le curseur au survol */
+  transition: background-color 0.3s; /* Animation pour le changement de couleur */
+}
+
+.stores-section button:hover {
+  background-color: #d52c24; /* Couleur du bouton au survol */
+}
+
+/* Styles pour la liste des boutiques */
+.stores-section ul {
+  list-style-type: none; /* Supprime les puces de la liste */
+  padding: 0; /* Supprime le remplissage */
+}
+
+/* Styles pour chaque élément de la liste des boutiques */
+.stores-section li {
+  margin: 5px 0; /* Marge entre les éléments */
+  padding: 10px; /* Remplissage pour chaque élément */
+  border: 1px solid #ccc; /* Bordure pour chaque élément */
+  border-radius: 4px; /* Coins arrondis */
+  background-color: #f9f9f9; /* Couleur de fond des éléments */
+}
+
+
+
+

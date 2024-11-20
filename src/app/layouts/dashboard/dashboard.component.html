@@ -1,0 +1,84 @@
+<div class="container mt-5">
+  <!-- Tableau d'offres Ooredoo -->
+  <h2 class="text-center mb-4">Ooredoo Offers</h2>
+
+  <!-- Liste horizontale pour les routeurs -->
+  <h3>Ooredoo Routers</h3>
+  <div class="scrollable-list">
+    <button class="scroll-button left" (click)="scrollLeft('routeursList')">&#10094;</button>
+    <div class="scrollable-list" id="routeursList">
+      <div class="card" *ngFor="let router of routers" (click)="afficherDetails(router)">
+        <img [src]="router.image" class="card-img-top" alt="{{router.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{ router.name }}</h5>
+          <p class="card-text">{{ router.price }} TND</p>
+        </div>
+      </div>
+    </div>
+    <button class="scroll-button right" (click)="scrollRight('routeursList')">&#10095;</button>
+  </div>
+
+  <!-- Liste horizontale pour les clés ADSL -->
+  <h3 class="mt-5">Ooredoo ADSL Keys</h3>
+  <div class="scrollable-list">
+    <button class="scroll-button left" (click)="scrollLeft('clesAdslList')">&#10094;</button>
+    <div class="scrollable-list" id="clesAdslList">
+      <div class="card" *ngFor="let cle of adslKeys" (click)="afficherDetails(cle)">
+        <img [src]="cle.image" class="card-img-top" alt="{{cle.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{ cle.name }}</h5>
+          <p class="card-text">{{ cle.price }} TND</p>
+        </div>
+      </div>
+    </div>
+    <button class="scroll-button right" (click)="scrollRight('clesAdslList')">&#10095;</button>
+  </div>
+
+  <!-- Liste horizontale pour les forfaits -->
+  <h3 class="mt-5">Ooredoo Plans</h3>
+  <div class="scrollable-list">
+    <button class="scroll-button left" (click)="scrollLeft('forfaitsList')">&#10094;</button>
+    <div class="scrollable-list" id="forfaitsList">
+      <div class="card" *ngFor="let forfait of ooredooPlans" (click)="afficherDetails(forfait)">
+        <img [src]="forfait.image" class="card-img-top" alt="{{forfait.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{ forfait.name }}</h5>
+          <p class="card-text">{{ forfait.price }} TND</p>
+        </div>
+      </div>
+    </div>
+    <button class="scroll-button right" (click)="scrollRight('forfaitsList')">&#10095;</button>
+  </div>
+
+
+  <!-- Modal pour afficher les détails -->
+  <div class="modal" [ngClass]="{'show': selectedOffer}" tabindex="-1"
+       [ngStyle]="{'display': selectedOffer ? 'block' : 'none'}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ selectedOffer?.nom }}</h5>
+          <button type="button" class="btn-close" (click)="fermerModal()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img [src]="selectedOffer?.image" alt="{{selectedOffer?.nom}}" class="img-fluid mb-3">
+          <p>Prix: {{ selectedOffer?.prix }} TND</p>
+          <p>{{ selectedOffer?.description }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="payNow(selectedOffer?.prix)">Pay</button>
+          <button type="button" class="btn btn-secondary" (click)="fermerModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="car-button-container text-center">
+  <button class="car-button" (click)="navigateToBMWProducts()">
+    <img
+      src="https://nova-hata.com/image/cache/catalog/Ithem/NH_0615/bmw-logo-machine-embroidery-design-615-750x750.jpg"
+      alt="BMW Car" class="car-image">
+  </button>
+  <p class="car-label">BMW Products</p>
+</div>
+<button class="car-button" (click)="navigateToProduits()">Produits</button>

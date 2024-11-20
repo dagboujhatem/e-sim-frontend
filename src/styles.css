@@ -1,0 +1,18 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import 'assets/dark-theme.scss';
+@import 'assets/light-theme.scss';
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    text-size-adjust: 100%; /* Ajoutez ceci pour éviter les avertissements de compatibilité */
+}
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+
+

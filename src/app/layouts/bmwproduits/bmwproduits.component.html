@@ -1,0 +1,73 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">BMW Products</h2>
+  <!-- Liste horizontale pour les voitures neuves -->
+  <h3>New Cars</h3>
+  <div class="d-flex align-items-center">
+    <button class="scroll-button left" (click)="scrollLeft('voituresNeuvesList')">&#10094;</button>
+    <div class="scrollable-list" id="voituresNeuvesList">
+      <div class="card" *ngFor="let voitureNeuve of newCars" (click)="afficherDetails(voitureNeuve)">
+        <img [src]="voitureNeuve.image" class="card-img-top" alt="{{voitureNeuve.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{ voitureNeuve.name }}</h5>
+          <p class="card-text">{{ voitureNeuve.price }} TND</p>
+        </div>
+      </div>
+    </div>
+    <button class="scroll-button right" (click)="scrollRight('voituresNeuvesList')">&#10095;</button>
+  </div>
+
+  <!-- Répétez le même schéma pour les voitures d'occasion et les accessoires -->
+  <h3 class="mt-5">Used Cars</h3>
+  <div class="d-flex align-items-center">
+    <button class="scroll-button left" (click)="scrollLeft('voituresOccasionList')">&#10094;</button>
+    <div class="scrollable-list" id="voituresOccasionList">
+      <div class="card" *ngFor="let voitureOccasion of usedCars" (click)="afficherDetails(voitureOccasion)">
+        <img [src]="voitureOccasion.image" class="card-img-top" alt="{{voitureOccasion.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{ voitureOccasion.name }}</h5>
+          <p class="card-text">{{ voitureOccasion.price }} TND</p>
+        </div>
+      </div>
+    </div>
+    <button class="scroll-button right" (click)="scrollRight('voituresOccasionList')">&#10095;</button>
+  </div>
+
+  <h3 class="mt-5">Genuine BMW Accessories</h3>
+  <div class="d-flex align-items-center">
+    <button class="scroll-button left" (click)="scrollLeft('accessoiresList')">&#10094;</button>
+    <div class="scrollable-list" id="accessoiresList">
+      <div class="card" *ngFor="let accessoire of accessories" (click)="afficherDetails(accessoire)">
+        <img [src]="accessoire.image" class="card-img-top" alt="{{accessoire.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{ accessoire.name }}</h5>
+          <p class="card-text">{{ accessoire.price }} TND</p>
+        </div>
+      </div>
+    </div>
+    <button class="scroll-button right" (click)="scrollRight('accessoiresList')">&#10095;</button>
+  </div>
+
+  <!-- Modal pour afficher les détails -->
+  <div class="modal" [ngClass]="{'show': selectedOffer}" tabindex="-1"
+       [ngStyle]="{'display': selectedOffer ? 'block' : 'none'}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ selectedOffer?.name }}</h5>
+          <button type="button" class="btn-close" (click)="fermerModal()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img [src]="selectedOffer?.image" alt="{{selectedOffer?.name}}" class="img-fluid mb-3">
+          <p>Prix: {{ selectedOffer?.price }} TND</p>
+          <p>{{ selectedOffer?.description }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="payNow(selectedOffer?.price)">Pay</button>
+          <button type="button" class="btn btn-secondary" (click)="fermerModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
