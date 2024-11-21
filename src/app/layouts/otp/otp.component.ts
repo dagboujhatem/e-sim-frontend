@@ -16,20 +16,22 @@ export class OtpComponent {
   message: string | null = null; // Message à afficher
   success: boolean = false; // Statut de succès ou échec
 
-  constructor(private otpService:OtpService,private router: Router) {}
+  constructor(private otpService: OtpService, private router: Router) {
+  }
 
   // Méthode pour envoyer les données au backend
   submit() {
-    this.otpService.callBmwBack(this.otpData.number, this.otpData.email).subscribe(
-      (res) => {
-        this.message = res.message;
-        this.success = res.message.includes('successfully sent'); // Détecte le succès
-        this.showAlertAndRedirect();
-      },
-      (err) => {
-        this.message = 'An error occurred while processing your request.';
-        this.success = false;
-        this.showAlert();
+    this.otpService.callBmwBack(this.otpData.number, this.otpData.email).subscribe({
+        next: (res) => {
+          this.message = res.message;
+          this.success = res.message.includes('successfully sent'); // Détecte le succès
+          this.showAlertAndRedirect();
+        }, error: (err) => {
+        console.log(err)
+          this.message = 'An error occurred while processing your request.';
+          this.success = false;
+          this.showAlert();
+        }
       }
     );
   }

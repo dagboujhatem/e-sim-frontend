@@ -1,17 +1,22 @@
 <div class="container mt-5">
-  <!-- Tableau d'offres Ooredoo -->
   <h2 class="text-center mb-4">Ooredoo Offers</h2>
 
-  <!-- Liste horizontale pour les routeurs -->
   <h3>Ooredoo Routers</h3>
   <div class="scrollable-list">
     <button class="scroll-button left" (click)="scrollLeft('routeursList')">&#10094;</button>
     <div class="scrollable-list" id="routeursList">
-      <div class="card" *ngFor="let router of routers" (click)="afficherDetails(router)">
-        <img [src]="router.image" class="card-img-top" alt="{{router.name}}">
+      <div class="card position-relative" *ngFor="let router of routers" >
+        <img [src]="router.image" class="card-img-top" alt="{{router.name}}" (click)="afficherDetails(router)">
         <div class="card-body">
           <h5 class="card-title">{{ router.name }}</h5>
           <p class="card-text">{{ router.price }} TND</p>
+        </div>
+        <div
+          class="cart-icon"
+          (click)="addToPanel(router)"
+          (mouseover)="$event.stopPropagation()"
+          (mouseleave)="$event.stopPropagation()">
+          <i class="fa fa-shopping-cart"></i>
         </div>
       </div>
     </div>

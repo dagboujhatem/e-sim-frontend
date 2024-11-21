@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ProductService} from '../../shared/services/product.service';
-import {forkJoin, map} from 'rxjs';
+import {forkJoin} from 'rxjs';
 import {Products} from '../../shared/model/product.types';
+import {PanelService} from '../../shared/services/panel.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,8 +14,10 @@ export class DashboardComponent implements OnInit {
   routers: Products[] = [];
   adslKeys: Products[] = [];
   ooredooPlans: Products[] = [];
+  panel: any[] = [];
 
   constructor(private router: Router,
+              private panelService: PanelService,
               private productService: ProductService) {
   }
 
@@ -77,7 +80,7 @@ export class DashboardComponent implements OnInit {
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51MyjRmG1Pb689ekQXSnaNb3T5zlM4AtWEw9ilaAeGxy07b4tVsjUyEqek0oRllNtoEhFkZ6TSx6JY6lww6sQTM5s00LO1tBdGY',
       locale: 'auto',
-      token: function (token: any) {
+      token: function () {
         alert(`The payment has been processed successfully!`);
       },
       closed: () => {
@@ -112,5 +115,11 @@ export class DashboardComponent implements OnInit {
 
   navigateToProduits() {
     this.router.navigate(['/produits']); // Redirige vers la page des produits BMW
+  }
+
+
+  addToPanel(product: any): void {
+    this.panelService.AddToPanel(product);
+    console.log(`${product.name} ajouté au panier.`);
   }
 }

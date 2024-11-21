@@ -1,0 +1,75 @@
+<div *ngIf="!isUserLoggedIn">
+  <nav class="p-3">
+    <ul class="nav nav-pills">
+      <li *ngFor="let action of actions">
+        <button
+          [ngClass]="action === currentAction ? 'btn btn-success ms-1' : 'btn btn-outline-success ms-1'"
+          (click)="handleRoute(action)">
+          {{ action.title }}
+          <i class="bi bi-{{ action.icon }}"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div *ngIf="isUserLoggedIn">
+  <mat-toolbar class="custom-toolbar">
+    <div class="d-flex align-items-center">
+      <button mat-button routerLink="/dashbord" routerLinkActive="active">User Dashboard</button>
+      <button mat-button routerLink="/otp" routerLinkActive="active" class="ms-2">Activate Esim</button>
+    </div>
+    <span class="spacer"></span>
+    <div class="d-flex align-items-center">
+
+      <button mat-button routerLink="/gpt" routerLinkActive="active" class="ms-2">
+        <mat-icon>chat</mat-icon>
+        ChatBot
+      </button>
+      <button mat-button routerLinkActive="active" class="ms-2" [matMenuTriggerFor]="panelMenu">
+        <mat-icon>shopping_cart</mat-icon>
+        Panel
+        <span class="cart-badge" *ngIf="panel.length > 0">{{ panel.length }}</span>
+      </button>
+      <mat-menu #panelMenu="matMenu">
+        <div class="cart ">
+          <mat-list *ngIf="panel.length > 0; else emptyCart">
+            <mat-list-item *ngFor="let item of panel;let i=index">
+              <div class="item-details">
+
+              <span  class="item-name">{{ item.name }}</span>
+              <span  class="item-price">{{ item.price }} TND</span>
+              </div>
+              <button mat-icon-button color="warn" (click)="removeFromCart(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+
+          <ng-template #emptyCart>
+            <p class="empty-cart-message">Votre panier est vide.</p>
+          </ng-template>
+        </div>
+
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <mat-menu #settingsMenu="matMenu">
+        <button mat-menu-item (click)="navigateToSettings()">
+          <mat-icon>person</mat-icon>
+          Edit Profile
+        </button>
+        <button mat-menu-item (click)="toggleTheme()">
+          <mat-icon>{{ themeIcon }}</mat-icon>
+          {{ themeToggleText }}
+        </button>
+        <button mat-menu-item routerLinkActive="active" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          Logout
+        </button>
+      </mat-menu>
+
+
+    </div>
+  </mat-toolbar>
+</div>

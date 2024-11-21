@@ -5,10 +5,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {CommonModule} from '@angular/common';
-import {provideHttpClient} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient} from '@angular/common/http';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {SignupComponent} from './layouts/signup/signup.component';
-import {MatIconModule} from '@angular/material/icon';
 import {ChatModule} from './layouts/chat/chat.module';
 import {DemoAngularMaterialModule} from './shared/DemoAngularMaterialModule';
 import {ProfileComponent} from './layouts/profile/profile.component';
@@ -19,6 +18,9 @@ import {ForgetPasswordComponent} from './layouts/forget-password/forget-password
 import {BmwproduitsComponent} from './layouts/bmwproduits/bmwproduits.component';
 import {CommentComponent} from './layouts/comment/comment.component';
 import {DashboardComponent} from './layouts/dashboard/dashboard.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import {MatLine} from '@angular/material/core';
+import {AuthInterceptor} from './shared/interceptors/AuthInterceptor';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import {DashboardComponent} from './layouts/dashboard/dashboard.component';
     BmwproduitsComponent,
     CommentComponent,
     DashboardComponent,
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     FormsModule,
@@ -44,12 +47,17 @@ import {DashboardComponent} from './layouts/dashboard/dashboard.component';
     BrowserModule,
     ChatModule,
     GoogleMapsModule,
-    MatIconModule,
+    MatLine,
 
-],
+  ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
