@@ -51,13 +51,13 @@ import {AuthInterceptor} from './shared/interceptors/AuthInterceptor';
 
   ],
   providers: [
-    provideAnimationsAsync(),
-    provideHttpClient(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    provideAnimationsAsync(),
+    provideHttpClient(),
   ],
   bootstrap: [AppComponent]
 })

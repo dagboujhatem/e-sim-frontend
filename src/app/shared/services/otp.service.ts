@@ -17,7 +17,6 @@ export class OtpService {
     return this.http.get(`${this.baseUrl}/callBmwBack`, {
       params: { number, email },
       headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.token}`,
         'Content-Type': 'application/json',
       }),
     });

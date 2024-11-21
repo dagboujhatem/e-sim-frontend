@@ -30,31 +30,47 @@
         Panel
         <span class="cart-badge" *ngIf="panel.length > 0">{{ panel.length }}</span>
       </button>
-      <mat-menu #panelMenu="matMenu">
+      <mat-menu #panelMenu="matMenu" [hasBackdrop]="true">
         <div class="cart ">
           <mat-list *ngIf="panel.length > 0; else emptyCart">
-            <mat-list-item *ngFor="let item of panel;let i=index">
-              <div class="item-details">
+            <div *ngFor="let item of panel;let i=index" class="cart-item">
+              <div class="cart-item-info">
 
-              <span  class="item-name">{{ item.name }}</span>
-              <span  class="item-price">{{ item.price }} TND</span>
+                <div class="item-name">{{ item.name }}</div>
+                <div class="item-price">{{ item.price }} TND</div>
               </div>
-              <button mat-icon-button color="warn" (click)="removeFromCart(i)">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </mat-list-item>
+              <div class="cart-item-actions">
+                <button mat-icon-button color="warn" (click)="removeFromCart(i,$event)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <div class="cart-item-quantity">
+                  <button mat-icon-button (click)="decreaseQuantity(i,$event)">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <span class="quantity">{{ item.quantityUnit }}</span>
+                  <button mat-icon-button (click)="increaseQuantity(i,$event)">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </div>
+
+            </div>
           </mat-list>
 
           <ng-template #emptyCart>
             <p class="empty-cart-message">Votre panier est vide.</p>
           </ng-template>
         </div>
-
+        <div class="cart-footer" *ngIf="panel.length > 0">
+          <h5 >{{ totalPrice }} TND</h5>
+          <button mat-button color="primary" (click)="closeMenu(panelMenu)">Confirm</button>
+          <button mat-button (click)="closeMenu(panelMenu)">Close</button>
+        </div>
       </mat-menu>
       <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
         <mat-icon>settings</mat-icon>
       </button>
-      <mat-menu #settingsMenu="matMenu">
+      <mat-menu #settingsMenu="matMenu" >
         <button mat-menu-item (click)="navigateToSettings()">
           <mat-icon>person</mat-icon>
           Edit Profile

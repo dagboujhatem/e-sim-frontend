@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ThemeService} from '../../shared/services/theme.service';
 import {UserStorageService} from '../../shared/services/storage/user-storage.service';
 import {PanelService} from '../../shared/services/panel.service';
+import {MatMenu} from '@angular/material/menu';
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +19,7 @@ export class NavbarComponent implements OnInit {
   isDarkTheme: boolean = false;
 
   constructor(private router: Router, private themeService: ThemeService,
+              private cdr: ChangeDetectorRef,
               private panelService:PanelService) {
   }
 
@@ -64,8 +66,34 @@ export class NavbarComponent implements OnInit {
     return this.panelService.getPanel();
   }
   // Remove a product from the cart
-  removeFromCart(index: number): void {
+  removeFromCart(index: number, event:MouseEvent): void {
+    event.stopPropagation(); // Empêche la fermeture automatique
+
     const removedItem = this.panel.splice(index, 1);
     console.log(`${removedItem[0]?.name} removed from the cart.`);
+    this.cdr.detectChanges();
+  }
+  increaseQuantity(index: number, event:MouseEvent): void {
+    event.stopPropagation();
+    this.panel[index].quantityUnit = (this.panel[index].quantityUnit || 1) + 1;
+
+    this.cdr.detectChanges();
+
+  }
+
+  decreaseQuantity(index: number, event:MouseEvent): void {
+    event.stopPropagation();
+
+    if (this.panel[index].quantityUnit > 1) {
+      this.panel[index].quantityUnit -= 1;
+    }
+    this.cdr.detectChanges();
+
+  }
+  get totalPrice(): number {
+    return this.panel.reduce((sum, item) => sum + (item.price * (item.quantityUnit || 1)), 0);
+  }
+  closeMenu(menu: MatMenu): void {
+    menu.closed.emit();
   }
 }
