@@ -119,6 +119,7 @@ export class DashboardComponent implements OnInit {
 
 
   addToPanel(product: any): void {
+    product.quantityUnit = 1;
     this.panelService.AddToPanel(product);
     console.log(`${product.name} ajouté au panier.`);
   }
