@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit{
   constructor(private formBuilder: FormBuilder,
               private snackBar: MatSnackBar,
               private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+            private userStorageService:UserStorageService) {
   }
 
   ngOnInit(): void {
@@ -52,7 +53,7 @@ export class LoginComponent implements OnInit{
 
     this.authService.login(email, password).subscribe(
       (response: User) => {
-        if (UserStorageService.isLoggedIn()) {
+        if (this.userStorageService.isLoggedIn()) {
           this.router.navigateByUrl('/dashbord');
         }
       },

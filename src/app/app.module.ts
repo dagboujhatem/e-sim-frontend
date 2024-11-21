@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {CommonModule} from '@angular/common';
-import {HTTP_INTERCEPTORS, provideHttpClient} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient} from '@angular/common/http';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {SignupComponent} from './layouts/signup/signup.component';
 import {ChatModule} from './layouts/chat/chat.module';
@@ -20,7 +20,9 @@ import {CommentComponent} from './layouts/comment/comment.component';
 import {DashboardComponent} from './layouts/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatLine} from '@angular/material/core';
-import {AuthInterceptor} from './shared/interceptors/AuthInterceptor';
+import { QrCodeComponent } from './layouts/qr-code/qr-code.component';
+import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
+
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import {AuthInterceptor} from './shared/interceptors/AuthInterceptor';
     CommentComponent,
     DashboardComponent,
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    QrCodeComponent
   ],
   imports: [
     FormsModule,
@@ -48,16 +51,18 @@ import {AuthInterceptor} from './shared/interceptors/AuthInterceptor';
     ChatModule,
     GoogleMapsModule,
     MatLine,
+   HttpClientModule
 
   ],
   providers: [
-    provideAnimationsAsync(),
-    provideHttpClient(),
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    provideAnimationsAsync(),
+    provideHttpClient(),
+    
   ],
   bootstrap: [AppComponent]
 })

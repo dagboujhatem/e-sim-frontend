@@ -18,15 +18,15 @@ export class UserStorageService {
     window.localStorage.setItem(USER, JSON.stringify(user));
   }
  
-  static getToken(): string | null {
+  public getToken(): string | null {
     return localStorage.getItem(TOKEN);
   }
 
   
-  static getUser(): any {
+  public getUser(): any {
     return JSON.parse(localStorage.getItem(USER) || 'null');
   }
-  static getUserId():string{
+  public getUserId():string{
     const user =this.getUser();
     if(user==null){
       return '';
@@ -35,11 +35,11 @@ export class UserStorageService {
   }
   
  
-  static isLoggedIn(): boolean {
+  public isLoggedIn(): boolean {
     return this.getToken() !== null; // Vérifie si le jeton est présent
   }
 
-  static signOut():void{
+  public signOut():void{
     window.localStorage.removeItem(TOKEN);
     window.localStorage.removeItem(USER);
   }

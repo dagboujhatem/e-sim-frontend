@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 const TOKEN='esim-token';
 
@@ -16,15 +16,15 @@ export class OtpService {
   callBmwBack(number: string, email: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/callBmwBack`, {
       params: { number, email },
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.token}`,
-        'Content-Type': 'application/json',
-      }),
+    
     });
   }
   // Méthode pour vérifier l'OTP
   verifyOtp(email: string, otpCode: string): Observable<{ message: string; success: boolean }> {
-    return this.http.post<{ message: string; success: boolean }>(`${this.baseUrl}/verifyOtp`, { email, otpCode });
+    
+    return this.http.post<{ message: string; success: boolean }>(`${this.baseUrl}/verifyOtp`, { email, otpCode }
+      
+    );
   }
 
 }

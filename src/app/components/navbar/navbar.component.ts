@@ -18,7 +18,9 @@ export class NavbarComponent implements OnInit {
   isDarkTheme: boolean = false;
 
   constructor(private router: Router, private themeService: ThemeService,
-              private panelService:PanelService) {
+              private panelService:PanelService,
+            private userStorageService:UserStorageService) {
+              this.isUserLoggedIn=this.userStorageService?.isLoggedIn();
   }
 
   handleRoute(action: any) {
@@ -26,18 +28,18 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl(action.route);
   }
 
-  isUserLoggedIn: boolean = UserStorageService.isLoggedIn();
+  isUserLoggedIn: boolean ;
 
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
-      this.isUserLoggedIn = UserStorageService.isLoggedIn();
+      this.isUserLoggedIn = this.userStorageService.isLoggedIn();
 
     })
   }
 
   logout() {
-    UserStorageService.signOut();
+    this.userStorageService.signOut();
     this.router.navigateByUrl('login');
   }
 
