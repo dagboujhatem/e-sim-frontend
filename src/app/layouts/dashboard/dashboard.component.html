@@ -67,7 +67,7 @@
         </div>
         <div class="modal-body text-center">
           <img [src]="selectedOffer?.image" alt="{{selectedOffer?.nom}}" class="img-fluid mb-3">
-          <p>Prix: {{ selectedOffer?.prix }} TND</p>
+          <p>Prix: {{ selectedOffer?.price }} TND</p>
           <p>{{ selectedOffer?.description }}</p>
         </div>
         <div class="modal-footer">
@@ -86,4 +86,3 @@
   </button>
   <p class="car-label">BMW Products</p>
 </div>
-<button class="car-button" (click)="navigateToProduits()">Produits</button>

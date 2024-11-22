@@ -22,6 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatLine} from '@angular/material/core';
 import { QrCodeComponent } from './layouts/qr-code/qr-code.component';
 import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -51,7 +53,8 @@ import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
     ChatModule,
     GoogleMapsModule,
     MatLine,
-   HttpClientModule
+   HttpClientModule,
+   NgbModule,
 
   ],
   providers: [

@@ -4,23 +4,30 @@ import {ThemeService} from '../../shared/services/theme.service';
 import {UserStorageService} from '../../shared/services/storage/user-storage.service';
 import {PanelService} from '../../shared/services/panel.service';
 import {MatMenu} from '@angular/material/menu';
-
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { CommandService } from '../../shared/services/command.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+  panelForm: FormGroup = new FormGroup({});
   actions = [
     {route: '/home', title: 'Home', icon: 'house'},
     {route: '/gpt', title: 'ChatGPT', icon: 'chat'},
   ]
   currentAction: any;
   isDarkTheme: boolean = false;
-
+  isUserLoggedIn: boolean = false;
   constructor(private router: Router, private themeService: ThemeService,
               private panelService:PanelService,
-            private userStorageService:UserStorageService) {
+            private userStorageService:UserStorageService,
+            private fb: FormBuilder,
+            private modalService: NgbModal,
+            private commandService: CommandService,
+            private cdr: ChangeDetectorRef,) {
               this.isUserLoggedIn=this.userStorageService?.isLoggedIn();
   }
 
@@ -28,11 +35,17 @@ export class NavbarComponent implements OnInit {
     this.currentAction + action;
     this.router.navigateByUrl(action.route);
   }
-
-  isUserLoggedIn: boolean ;
-
-
   ngOnInit(): void {
+    this.panelForm = this.fb.group({
+      products: [],
+      user: [],
+      username: [],
+      email: [],
+      address: [],
+      phoneNumber: [],
+      payment: [],
+      totalPrice: [],
+    })
     this.router.events.subscribe(event => {
       this.isUserLoggedIn = this.userStorageService.isLoggedIn();
 
@@ -64,9 +77,8 @@ export class NavbarComponent implements OnInit {
   }
 
   get panel(): any[] {
-    return this.panelService.getPanel();
-  }
-  // Remove a product from the cart
+    return this.panelService.getPanel();}
+   // Remove a product from the cart
   removeFromCart(index: number, event:MouseEvent): void {
     event.stopPropagation(); // Empêche la fermeture automatique
 
@@ -96,5 +108,25 @@ export class NavbarComponent implements OnInit {
   }
   closeMenu(menu: MatMenu): void {
     menu.closed.emit();
+  }
+  onSave() {
+    console.log(this.panelForm.value)
+    this.commandService.addCommand(this.panelForm.value).subscribe(res => {
+      console.log(res)
+    })
+  }
+
+  showModal(targetModal: any, offer: any) {
+    this.modalService.open(targetModal, {
+      centered: true,
+      backdrop: 'static',
+      size: 'lg'
+    });
+    console.log(this.totalPrice)
+    this.panelForm.patchValue({
+      totalPrice: this.totalPrice,
+      products: this.panel
+    })
+    this.panelForm.get('totalPrice')?.disable()
   }
 }
