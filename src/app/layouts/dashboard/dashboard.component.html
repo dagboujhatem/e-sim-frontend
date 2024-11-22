@@ -5,7 +5,7 @@
   <div class="scrollable-list">
     <button class="scroll-button left" (click)="scrollLeft('routeursList')">&#10094;</button>
     <div class="scrollable-list" id="routeursList">
-      <div class="card position-relative" *ngFor="let router of routers" >
+      <div class="card position-relative" *ngFor="let router of routers">
         <img [src]="router.image" class="card-img-top" alt="{{router.name}}" (click)="afficherDetails(router)">
         <div class="card-body">
           <h5 class="card-title">{{ router.name }}</h5>
@@ -28,11 +28,18 @@
   <div class="scrollable-list">
     <button class="scroll-button left" (click)="scrollLeft('clesAdslList')">&#10094;</button>
     <div class="scrollable-list" id="clesAdslList">
-      <div class="card" *ngFor="let cle of adslKeys" (click)="afficherDetails(cle)">
-        <img [src]="cle.image" class="card-img-top" alt="{{cle.name}}">
+      <div class="card" *ngFor="let cle of adslKeys" >
+        <img [src]="cle.image" class="card-img-top" alt="{{cle.name}}" (click)="afficherDetails(cle)">
         <div class="card-body">
           <h5 class="card-title">{{ cle.name }}</h5>
           <p class="card-text">{{ cle.price }} TND</p>
+        </div>
+        <div
+          class="cart-icon"
+          (click)="addToPanel(cle)"
+          (mouseover)="$event.stopPropagation()"
+          (mouseleave)="$event.stopPropagation()">
+          <i class="fa fa-shopping-cart"></i>
         </div>
       </div>
     </div>
@@ -44,11 +51,18 @@
   <div class="scrollable-list">
     <button class="scroll-button left" (click)="scrollLeft('forfaitsList')">&#10094;</button>
     <div class="scrollable-list" id="forfaitsList">
-      <div class="card" *ngFor="let forfait of ooredooPlans" (click)="afficherDetails(forfait)">
-        <img [src]="forfait.image" class="card-img-top" alt="{{forfait.name}}">
+      <div class="card" *ngFor="let forfait of ooredooPlans" >
+        <img [src]="forfait.image" class="card-img-top" (click)="afficherDetails(forfait)" alt="{{forfait.name}}">
         <div class="card-body">
           <h5 class="card-title">{{ forfait.name }}</h5>
           <p class="card-text">{{ forfait.price }} TND</p>
+        </div>
+        <div
+          class="cart-icon"
+          (click)="addToPanel(forfait)"
+          (mouseover)="$event.stopPropagation()"
+          (mouseleave)="$event.stopPropagation()">
+          <i class="fa fa-shopping-cart"></i>
         </div>
       </div>
     </div>
@@ -71,7 +85,6 @@
           <p>{{ selectedOffer?.description }}</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" (click)="payNow(selectedOffer?.prix)">Pay</button>
           <button type="button" class="btn btn-secondary" (click)="fermerModal()">Close</button>
         </div>
       </div>
