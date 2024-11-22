@@ -18,11 +18,10 @@ import {ForgetPasswordComponent} from './layouts/forget-password/forget-password
 import {BmwproduitsComponent} from './layouts/bmwproduits/bmwproduits.component';
 import {CommentComponent} from './layouts/comment/comment.component';
 import {DashboardComponent} from './layouts/dashboard/dashboard.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 import {MatLine} from '@angular/material/core';
-import { QrCodeComponent } from './layouts/qr-code/qr-code.component';
-import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
-
+import {QrCodeComponent} from './layouts/qr-code/qr-code.component';
+import {TokenInterceptor} from './shared/interceptors/TokenInterceptor';
 
 
 @NgModule({
@@ -38,7 +37,7 @@ import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
     DashboardComponent,
     AppComponent,
     NavbarComponent,
-    QrCodeComponent
+    QrCodeComponent,
   ],
   imports: [
     FormsModule,
@@ -51,7 +50,7 @@ import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
     ChatModule,
     GoogleMapsModule,
     MatLine,
-   HttpClientModule
+    HttpClientModule
 
   ],
   providers: [
@@ -62,7 +61,7 @@ import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
     },
     provideAnimationsAsync(),
     provideHttpClient(),
-    
+
   ],
   bootstrap: [AppComponent]
 })

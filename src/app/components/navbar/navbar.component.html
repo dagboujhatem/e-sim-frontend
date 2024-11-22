@@ -62,15 +62,15 @@
           </ng-template>
         </div>
         <div class="cart-footer" *ngIf="panel.length > 0">
-          <h5 >{{ totalPrice }} TND</h5>
-          <button mat-button color="primary" (click)="closeMenu(panelMenu)">Confirm</button>
+          <h5>{{ totalPrice }} TND</h5>
+          <button mat-button color="primary" (click)="showModal(contentEdit, panel)">Confirm</button>
           <button mat-button (click)="closeMenu(panelMenu)">Close</button>
         </div>
       </mat-menu>
       <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
         <mat-icon>settings</mat-icon>
       </button>
-      <mat-menu #settingsMenu="matMenu" >
+      <mat-menu #settingsMenu="matMenu">
         <button mat-menu-item (click)="navigateToSettings()">
           <mat-icon>person</mat-icon>
           Edit Profile
@@ -89,3 +89,46 @@
     </div>
   </mat-toolbar>
 </div>
+<ng-template #contentEdit let-modal>
+  <div class="modal-header justify-content-center">
+    <h4 class="modal-title" id="modal-basic-title">Confirm my command</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="panelForm" novalidate>
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="totalPrice">Panel products total</label>
+        <input formControlName="totalPrice" id="totalPrice" class="form-control" />
+      </div>
+
+      <!-- Phone Number Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input formControlName="email" id="email" class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input formControlName="username" id="username" class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input formControlName="address" id="address" class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label>Payment</label>
+        <select formControlName="payment" class="form-control">
+          <option value="delivery">Delivery</option>
+          <option value="online">Online payment</option>
+        </select>
+      </div>
+      <!-- Action Buttons -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
+        <button type="submit" class="btn btn-primary" (click)="onSave()">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
