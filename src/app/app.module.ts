@@ -18,7 +18,7 @@ import {ForgetPasswordComponent} from './layouts/forget-password/forget-password
 import {BmwproduitsComponent} from './layouts/bmwproduits/bmwproduits.component';
 import {CommentComponent} from './layouts/comment/comment.component';
 import {DashboardComponent} from './layouts/dashboard/dashboard.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 import {MatLine} from '@angular/material/core';
 import { QrCodeComponent } from './layouts/qr-code/qr-code.component';
 import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
@@ -40,7 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DashboardComponent,
     AppComponent,
     NavbarComponent,
-    QrCodeComponent
+    QrCodeComponent,
   ],
   imports: [
     FormsModule,
@@ -65,7 +65,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     },
     provideAnimationsAsync(),
     provideHttpClient(),
-    
+
   ],
   bootstrap: [AppComponent]
 })

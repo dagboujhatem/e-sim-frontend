@@ -86,7 +86,8 @@ export class NavbarComponent implements OnInit {
     console.log(`${removedItem[0]?.name} removed from the cart.`);
     this.cdr.detectChanges();
   }
-  increaseQuantity(index: number, event:MouseEvent): void {
+
+  increaseQuantity(index: number, event: MouseEvent): void {
     event.stopPropagation();
     this.panel[index].quantityUnit = (this.panel[index].quantityUnit || 1) + 1;
 
@@ -94,7 +95,7 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  decreaseQuantity(index: number, event:MouseEvent): void {
+  decreaseQuantity(index: number, event: MouseEvent): void {
     event.stopPropagation();
 
     if (this.panel[index].quantityUnit > 1) {
@@ -103,9 +104,11 @@ export class NavbarComponent implements OnInit {
     this.cdr.detectChanges();
 
   }
+
   get totalPrice(): number {
     return this.panel.reduce((sum, item) => sum + (item.price * (item.quantityUnit || 1)), 0);
   }
+
   closeMenu(menu: MatMenu): void {
     menu.closed.emit();
   }
