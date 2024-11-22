@@ -6,7 +6,8 @@ import {PanelService} from '../../shared/services/panel.service';
 import {MatMenu} from '@angular/material/menu';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {CommandService} from '../../shared/services/command.service';
+import {OrderService} from '../../shared/services/order.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-navbar',
@@ -26,8 +27,9 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private themeService: ThemeService,
               private panelService: PanelService,
               private fb: FormBuilder,
+              private snackBar: MatSnackBar,
               private modalService: NgbModal,
-              private commandService: CommandService,
+              private commandService: OrderService,
               private cdr: ChangeDetectorRef,
               private userStorageService: UserStorageService) {
   }
@@ -36,7 +38,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.panelForm = this.fb.group({
       products: [],
-      user: [],
+      userId: [],
       username: [],
       email: [],
       address: [],
@@ -121,8 +123,12 @@ export class NavbarComponent implements OnInit {
 
   onSave() {
     console.log(this.panelForm.value)
-    this.commandService.addCommand(this.panelForm.value).subscribe(res => {
+    this.commandService.addOrder(this.panelForm.value).subscribe(res => {
       console.log(res)
+      this.panelService.clearPanel();
+      this.snackBar.open('Votre commande a été envoyée avec succès.', 'Fermer', {duration: 5000});
+
+      this.modalService.dismissAll();
     })
   }
 
@@ -135,9 +141,9 @@ export class NavbarComponent implements OnInit {
     console.log(this.totalPrice)
     this.panelForm.patchValue({
       totalPrice: this.totalPrice,
-      products: this.panel
+      products: this.panel,
+      userId: this.userStorageService.getUser()
     })
-    this.panelForm.get('totalPrice')?.disable()
   }
 
 }

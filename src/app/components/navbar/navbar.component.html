@@ -30,6 +30,10 @@
         Panel
         <span class="cart-badge" *ngIf="panel.length > 0">{{ panel.length }}</span>
       </button>
+      <button mat-button routerLinkActive="active" class="ms-2" routerLink="/orders">
+        <mat-icon>receipt</mat-icon>
+        Mes commandes
+      </button>
       <mat-menu #panelMenu="matMenu" [hasBackdrop]="true">
         <div class="cart ">
           <mat-list *ngIf="panel.length > 0; else emptyCart">
@@ -98,7 +102,8 @@
       <!-- Name Field -->
       <div class="form-group">
         <label for="totalPrice">Panel products total</label>
-        <input formControlName="totalPrice" id="totalPrice" class="form-control" />
+        <input formControlName="totalPrice" id="totalPrice"
+               class="form-control" />
       </div>
 
       <!-- Phone Number Field -->

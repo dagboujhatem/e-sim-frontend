@@ -14,23 +14,25 @@ import {BmwproduitsComponent} from './layouts/bmwproduits/bmwproduits.component'
 import {ProfileComponent} from './layouts/profile/profile.component';
 import {CategorieComponent} from './layouts/categorie/categorie.component';
 import {ForgetPasswordComponent} from './layouts/forget-password/forget-password.component';
+import {MyOrdersComponent} from './layouts/my-orders/my-orders.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent} , // Votre page d'accueil
-  {path:'gpt', component:ChatDialogComponent},
-  {path: 'otp',component:OtpComponent },
-  { path: 'verify-otp', component: OtpVerificationComponent },
-  { path: 'stores', component: StoreMapComponent },
-  { path: 'Qr_code/:otpCode', component: QrCodeComponent },
-  { path: 'commentaire', component:CommentComponent },
-  { path: 'login', component:LoginComponent},
-  { path: 'signup', component:SignupComponent },
-  {path:'dashbord',component:DashboardComponent},
-  {path:'bmw-products',component:BmwproduitsComponent},
-  {path:'editProfile',component:ProfileComponent},
-  {path:'produits',component:CategorieComponent},
-  {path:'forgetPassword',component:ForgetPasswordComponent},
-  {path:'',redirectTo:'/home' ,pathMatch:'full'}
+  {path: 'home', component: HomeComponent},
+  {path: 'gpt', component: ChatDialogComponent},
+  {path: 'orders', component: MyOrdersComponent},
+  {path: 'otp', component: OtpComponent},
+  {path: 'verify-otp', component: OtpVerificationComponent},
+  {path: 'stores', component: StoreMapComponent},
+  {path: 'Qr_code/:otpCode', component: QrCodeComponent},
+  {path: 'commentaire', component: CommentComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'dashbord', component: DashboardComponent},
+  {path: 'bmw-products', component: BmwproduitsComponent},
+  {path: 'editProfile', component: ProfileComponent},
+  {path: 'produits', component: CategorieComponent},
+  {path: 'forgetPassword', component: ForgetPasswordComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
 
 ];
 
@@ -38,4 +40,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

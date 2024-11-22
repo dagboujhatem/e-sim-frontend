@@ -22,6 +22,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {MatLine} from '@angular/material/core';
 import {QrCodeComponent} from './layouts/qr-code/qr-code.component';
 import {TokenInterceptor} from './shared/interceptors/TokenInterceptor';
+import { MyOrdersComponent } from './layouts/my-orders/my-orders.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {TokenInterceptor} from './shared/interceptors/TokenInterceptor';
     AppComponent,
     NavbarComponent,
     QrCodeComponent,
+    MyOrdersComponent,
   ],
   imports: [
     FormsModule,
