@@ -18,8 +18,6 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let newReq = req.clone();
     const token = this.userStorageService.getToken();
-    console.log(token)
-    console.log(req.url)
     newReq = newReq.clone({
       setHeaders: {
         'Content-Type': 'application/json'

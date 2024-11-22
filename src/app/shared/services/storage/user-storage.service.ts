@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-const TOKEN='esim-token';
+import {ESIM_USER, TOKEN} from '../../constants/app-constants';
 const USER ='esim-user';
 @Injectable({
   providedIn: 'root'
@@ -13,34 +13,34 @@ export class UserStorageService {
     window.localStorage.setItem(TOKEN, token);
   }
 
-  public saveUser(user: any): void {
-    window.localStorage.removeItem(USER);
-    window.localStorage.setItem(USER, JSON.stringify(user));
+  public saveStorage(item:string, body: any): void {
+    window.localStorage.removeItem(item);
+    window.localStorage.setItem(item, JSON.stringify(body));
   }
- 
+
   public getToken(): string | null {
     return localStorage.getItem(TOKEN);
   }
 
-  
-  public getUser(): any {
-    return JSON.parse(localStorage.getItem(USER) || 'null');
+
+  public getStorage(item:string): any {
+    return JSON.parse(localStorage.getItem(item) || 'null');
   }
   public getUserId():string{
-    const user =this.getUser();
+    const user =this.getStorage(ESIM_USER);
     if(user==null){
       return '';
     }
-    return user.userId ;
+    return user.id ;
   }
-  
- 
+
+
   public isLoggedIn(): boolean {
     return this.getToken() !== null; // Vérifie si le jeton est présent
   }
 
   public signOut():void{
     window.localStorage.removeItem(TOKEN);
-    window.localStorage.removeItem(USER);
+    window.localStorage.removeItem(ESIM_USER);
   }
 }

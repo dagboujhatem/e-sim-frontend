@@ -57,13 +57,6 @@
           <h5 class="card-title">{{ forfait.name }}</h5>
           <p class="card-text">{{ forfait.price }} TND</p>
         </div>
-        <div
-          class="cart-icon"
-          (click)="addToPanel(forfait)"
-          (mouseover)="$event.stopPropagation()"
-          (mouseleave)="$event.stopPropagation()">
-          <i class="fa fa-shopping-cart"></i>
-        </div>
       </div>
     </div>
     <button class="scroll-button right" (click)="scrollRight('forfaitsList')">&#10095;</button>
@@ -84,9 +77,7 @@
           <p>Prix: {{ selectedOffer?.price }} TND</p>
           <p>{{ selectedOffer?.description }}</p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="fermerModal()">Close</button>
-        </div>
+
       </div>
     </div>
   </div>

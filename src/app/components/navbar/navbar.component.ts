@@ -8,6 +8,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {OrderService} from '../../shared/services/order.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {USER} from '../../shared/constants/app-constants';
 
 @Component({
   selector: 'app-navbar',
@@ -131,11 +132,11 @@ export class NavbarComponent implements OnInit {
       backdrop: 'static',
       size: 'lg'
     });
-    console.log(this.totalPrice)
+    console.log(this.userStorageService.getUserId())
     this.panelForm.patchValue({
       totalPrice: this.totalPrice,
       products: this.panel,
-      userId: this.userStorageService.getUser()
+      userId: this.userStorageService.getUserId()
     })
   }
 }

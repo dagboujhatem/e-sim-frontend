@@ -18,7 +18,6 @@ export class ProfileComponent implements OnInit {
       email: [{value:'',disabled:true}, [Validators.required, Validators.email]],
       name: ['', Validators.required],
       phoneNumber: ['', Validators.required],
-      password: ['']
     });
   }
   ngOnInit(): void {

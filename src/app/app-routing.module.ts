@@ -15,23 +15,103 @@ import {ProfileComponent} from './layouts/profile/profile.component';
 import {CategorieComponent} from './layouts/categorie/categorie.component';
 import {ForgetPasswordComponent} from './layouts/forget-password/forget-password.component';
 import {MyOrdersComponent} from './layouts/my-orders/my-orders.component';
+import {AuthGuard} from './shared/guards/auth.guard';
+import {ADMIN, USER} from './shared/constants/app-constants';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'gpt', component: ChatDialogComponent},
-  {path: 'orders', component: MyOrdersComponent},
-  {path: 'otp', component: OtpComponent},
-  {path: 'verify-otp', component: OtpVerificationComponent},
-  {path: 'stores', component: StoreMapComponent},
-  {path: 'Qr_code/:otpCode', component: QrCodeComponent},
-  {path: 'commentaire', component: CommentComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'dashbord', component: DashboardComponent},
-  {path: 'bmw-products', component: BmwproduitsComponent},
-  {path: 'editProfile', component: ProfileComponent},
-  {path: 'produits', component: CategorieComponent},
-  {path: 'forgetPassword', component: ForgetPasswordComponent},
+  {
+    path: 'home', component: HomeComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'gpt', component: ChatDialogComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'orders', component: MyOrdersComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'otp', component: OtpComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'verify-otp', component: OtpVerificationComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'stores', component: StoreMapComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'Qr_code/:otpCode', component: QrCodeComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'commentaire', component: CommentComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'login', component: LoginComponent,
+  },
+  {
+    path: 'signup', component: SignupComponent,
+  },
+  {
+    path: 'dashbord', component: DashboardComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'bmw-products', component: BmwproduitsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'editProfile', component: ProfileComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'produits', component: CategorieComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: [ADMIN,USER]
+    },
+  },
+  {
+    path: 'forgetPassword', component: ForgetPasswordComponent,
+  },
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 
 ];

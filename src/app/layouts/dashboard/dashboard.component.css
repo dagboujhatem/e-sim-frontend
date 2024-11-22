@@ -80,10 +80,12 @@ h2 {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .cart-icon:hover {
   transform: scale(1.2); /* Slight zoom effect */
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
 }
+
 .cart-icon mat-icon {
   font-size: 1.5rem; /* Slightly larger icon size */
   transition: transform 0.3s ease, color 0.3s ease;
@@ -92,6 +94,7 @@ h2 {
 .cart-icon:hover mat-icon {
   color: #e5e7eb; /* Subtle color change on hover */
 }
+
 .card:hover .cart-icon {
   display: flex;
   transform: scale(1.2);
@@ -103,4 +106,9 @@ h2 {
 
 .card:hover .card-img-top {
   transform: scale(1.1);
+}
+
+
+.modal-dialog {
+  width: 50%;
 }

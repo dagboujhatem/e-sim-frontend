@@ -12,7 +12,7 @@ export class UserService {
 
 
   forgotPassword(email: string) {
-    return this.http.post(`${environment.apiUrl}forgot-password`, { email });
+    return this.http.post(`${environment.apiUrl}api/forgot-password`, email);
   }
 
 
@@ -20,7 +20,7 @@ export class UserService {
     const body = {
       token, password
     }
-    return this.http.post(`${environment.apiUrl}reset-password`, body);
+    return this.http.post(`${environment.apiUrl}api/reset-password`, body);
 
   }
 }

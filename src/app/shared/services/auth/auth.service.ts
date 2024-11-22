@@ -1,37 +1,40 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-import { UserStorageService } from '../storage/user-storage.service';
-export interface ProfileUpdateRequest {
-  email: string;
-  phoneNumber: string;
-  name: string;
-  password?: string;
-}
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, map} from 'rxjs';
+import {UserStorageService} from '../storage/user-storage.service';
+import {environment} from '../../../../environments/environment';
+import {User} from '../../model/user.types';
+import {ESIM_USER} from '../../constants/app-constants';
 
-const BASIC_URL="http://localhost:8443/";
+const TOKEN = 'esim-token';
+const USER = 'esim-user';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
 
-constructor(private http: HttpClient, private userStorageService: UserStorageService) {}
+  constructor(private http: HttpClient, private userStorageService: UserStorageService) {
+  }
 
   login(email: string, password: string): any {
-    const body = { email, password };
+    const body = {email, password};
 
-    return this.http.post(BASIC_URL + "authenticate", body, {  observe: 'response' }).pipe(
-      map((res:any) => {
+    return this.http.post(`${environment.apiUrl}authenticate`, body, {observe: 'response'}).pipe(
+      map((res: any) => {
+        console.log(res)
         this.userStorageService.saveToken(res.body.token);
-        this.userStorageService.saveUser(res.body.userId);
+       const user = new User(res.body.userId, '', '', '', '', res.body.roles)
+        console.log(user)
+        this.userStorageService.saveStorage(ESIM_USER, user);
         return true;
       })
     );
   }
 
 
-  register ( signupRequest:any):Observable<any>{
-     return this.http.post(BASIC_URL+ "sign-up", signupRequest);
+  register(signupRequest: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}sign-up`, signupRequest);
   }
 }

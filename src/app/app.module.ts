@@ -24,9 +24,9 @@ import { MyOrdersComponent } from './layouts/my-orders/my-orders.component';
 import { QrCodeComponent } from './layouts/qr-code/qr-code.component';
 import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
+import {CategorieComponent} from './layouts/categorie/categorie.component';
+import {HomeComponent} from './layouts/home/home.component';
+import {StoreMapComponent} from './layouts/store-map/store-map.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     QrCodeComponent,
     MyOrdersComponent,
+    CategorieComponent,
+    HomeComponent,
+    StoreMapComponent
   ],
   imports: [
     FormsModule,
