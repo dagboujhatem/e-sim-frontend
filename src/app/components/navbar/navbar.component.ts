@@ -4,7 +4,7 @@ import {ThemeService} from '../../shared/services/theme.service';
 import {UserStorageService} from '../../shared/services/storage/user-storage.service';
 import {PanelService} from '../../shared/services/panel.service';
 import {MatMenu} from '@angular/material/menu';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup,Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {OrderService} from '../../shared/services/order.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
   currentAction: any;
   isDarkTheme: boolean = false;
   isUserLoggedIn: boolean = false;
+  handler: any = null;
   constructor(private router: Router, private themeService: ThemeService,
               private panelService: PanelService,
               private fb: FormBuilder,
@@ -42,12 +43,12 @@ export class NavbarComponent implements OnInit {
     this.panelForm = this.fb.group({
       products: [],
       userId: [],
-      username: [],
-      email: [],
-      address: [],
-      phoneNumber: [],
-      payment: [],
-      totalPrice: [],
+      username: ['',Validators.required],
+      email: ['',Validators.required, Validators.email],
+      address: ['',Validators.required],
+      phoneNumber: ['',Validators.required],
+      payment: ['',Validators.required],
+      totalPrice: [Validators.required,{ disabled: true },],
     })
     this.router.events.subscribe(event => {
       this.isUserLoggedIn = this.userStorageService.isLoggedIn();
@@ -139,4 +140,45 @@ export class NavbarComponent implements OnInit {
       userId: this.userStorageService.getUserId()
     })
   }
+
+  onPaymentMethodChange(event: Event): void {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    const totalPrice = this.panelForm.get('totalPrice')?.value;
+    if (selectedValue === 'online') {
+      this.payNow(totalPrice);
+    } else {
+      alert('Cash payment selected. Please proceed manually.');
+    }
+  }
+  
+  payNow(totalPrice: number): void {
+   
+    alert(`Initiating payment process for amount: ${totalPrice} TND`);
+  
+    if (!(<any>window).StripeCheckout) {
+      alert('Stripe is not loaded yet. Please wait.');
+      return;
+    }
+  
+    const handler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51MyjRmG1Pb689ekQXSnaNb3T5zlM4AtWEw9ilaAeGxy07b4tVsjUyEqek0oRllNtoEhFkZ6TSx6JY6lww6sQTM5s00LO1tBdGY',
+      locale: 'auto',
+      token: (token: any) => {
+        console.log('Payment token:', token);
+        alert(`The payment has been processed successfully!`);
+      },
+      closed: () => {
+        console.log('Stripe checkout window closed.');
+      }
+    });
+  
+    handler.open({
+      name: 'Payment',
+      description: 'Payment for order',
+      amount: totalPrice*100,
+      currency: 'TND',
+    });
+  }
+  
+  
 }

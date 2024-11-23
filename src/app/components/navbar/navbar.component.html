@@ -101,28 +101,34 @@
       <div class="form-group">
         <label for="totalPrice">Panel products total</label>
         <input formControlName="totalPrice" id="totalPrice"
-               class="form-control" />
+               class="form-control" readonly />
       </div>
 
       <!-- Phone Number Field -->
       <div class="form-group">
         <label for="email">Email</label>
-        <input formControlName="email" id="email" class="form-control"
+        <input formControlName="email" id="email" class="form-control" required
         />
       </div>
       <div class="form-group">
         <label for="username">Username</label>
-        <input formControlName="username" id="username" class="form-control"
+        <input formControlName="username" id="username" class="form-control"required
+        />
+      </div>
+      <!-- Phone Number Field -->
+      <div class="form-group">
+        <label for="Phone Number">Phone Number</label>
+        <input formControlName="Phone Number" id="Phone Number" class="form-control" required
         />
       </div>
       <div class="form-group">
         <label for="address">Address</label>
-        <input formControlName="address" id="address" class="form-control"
+        <input formControlName="address" id="address" class="form-control"required
         />
       </div>
       <div class="form-group">
         <label>Payment</label>
-        <select formControlName="payment" class="form-control">
+        <select formControlName="payment" (change)="onPaymentMethodChange($event)" class="form-control" required>
           <option value="delivery">Delivery</option>
           <option value="online">Online payment</option>
         </select>
