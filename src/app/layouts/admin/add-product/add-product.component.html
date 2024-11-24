@@ -2,22 +2,35 @@
   <!-- Name Field -->
   <mat-form-field >
     <label for="name">Name</label>
-    <input formControlName="name" id="name" matInput placeholder="Enter agent's name"/>
+    <input formControlName="name" id="name" matInput placeholder="Enter product's name"/>
   </mat-form-field>
 
   <!-- Email Field -->
   <mat-form-field >
     <label for="price">Price</label>
     <input formControlName="price" id="price" matInput
-           placeholder="Enter agent's email"/>
+           placeholder="Enter product's price"/>
+  </mat-form-field>
+  <!-- Email Field -->
+  <mat-form-field >
+    <label for="image">Image</label>
+    <input formControlName="image" id="image" matInput
+           placeholder="Enter product's url image"/>
+  </mat-form-field>
+  <!-- Email Field -->
+  <mat-form-field >
+    <label for="description">Description</label>
+    <input formControlName="description" id="description" matInput
+           placeholder="Enter product's description"/>
   </mat-form-field>
 
   <!-- Phone Number Field -->
   <mat-form-field >
     <label for="quantity">Quantity</label>
     <input formControlName="quantity" id="quantity" matInput
-           placeholder="Enter agent's phone number"/>
+           placeholder="Enter product's Quantity"/>
   </mat-form-field>
+  
   <!-- Action Buttons -->
-    <button type="submit" mat-flat-button (click)="onSave()">Save Changes</button>
+    <button type="submit" mat-flat-button (click)="onSave()">Save Product</button>
 </form>
