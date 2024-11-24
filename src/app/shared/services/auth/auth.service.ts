@@ -28,7 +28,7 @@ export class AuthService {
        const user = new User(res.body.userId, '', '', '', '', res.body.roles)
         console.log(user)
         this.userStorageService.saveStorage(ESIM_USER, user);
-        return true;
+        return user;
       })
     );
   }

@@ -60,3 +60,7 @@ button {
 mat-icon {
   color: var(--mdc-text-button-label-text-color, var(--mat-app-primary));
 }
+
+.active-link{
+  background-color: white;
+}

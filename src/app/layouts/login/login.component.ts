@@ -5,14 +5,8 @@ import {AuthService} from '../../shared/services/auth/auth.service';
 import {Router} from '@angular/router';
 import {UserStorageService} from '../../shared/services/storage/user-storage.service';
 import {HttpErrorResponse} from '@angular/common/http';
-
-interface User {
-  userId: string;
-  name: string;
-  email: string;
-  password: string;
-  phoneNumber: string;
-}
+import { ADMIN, USER } from '../../shared/constants/app-constants';
+import { User } from '../../shared/model/user.types';
 
 @Component({
   selector: 'app-login',
@@ -53,7 +47,11 @@ export class LoginComponent implements OnInit{
 
     this.authService.login(email, password).subscribe(
       (response: User) => {
-        if (this.userStorageService.isLoggedIn()) {
+        console.log(response);
+        if(response.role.includes(ADMIN)){
+          this.router.navigateByUrl('/admin/show-categories');
+
+        }else if(response.role.includes(USER)){
           this.router.navigateByUrl('/dashbord');
 
         }

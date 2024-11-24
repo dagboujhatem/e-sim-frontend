@@ -64,10 +64,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   private _check(route?: any): Observable<boolean> {
     const token = this.userStorageService.getToken();
     const user = this.userStorageService.getStorage(ESIM_USER);
-    console.log(token)
-    console.log(user?.role[0])
-    console.log(route?.data?.role)
-    console.log(route?.data?.role?.includes(user?.role))
     if (token) {
       if (route?.data?.role && !route?.data?.role?.includes(user?.role[0])) {
         this.userStorageService.signOut();

@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   showSidebar: boolean = false;
   isDarkTheme: boolean = false;
   routers = [
-    {url: '/home', title: 'Home', icon: 'home', class:''},
     {url: '', title: 'Categories', icon: '', class:''},
     {url: '/admin/show-categories', title: 'Show categories', icon: 'list', class:'ms-5'},
     {url: '/admin/add-category', title: 'Add category', icon: 'add', class:'ms-5'},

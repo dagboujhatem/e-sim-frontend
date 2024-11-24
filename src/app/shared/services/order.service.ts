@@ -16,6 +16,10 @@ export class OrderService {
   addOrder(order: OrderTypes): Observable<OrderTypes> {
 
     return this.httpClient.post<OrderTypes>(`${environment.apiUrl}${environment.orders}`, order);
+  } 
+  editOrder(id:number, order: OrderTypes): Observable<OrderTypes> {
+
+    return this.httpClient.patch<OrderTypes>(`${environment.apiUrl}${environment.orders}/${id}`, order);
   }
 
   deleteOrder(orderId: number): Observable<OrderTypes> {

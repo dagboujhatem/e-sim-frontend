@@ -33,8 +33,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions</th>
       <td mat-cell *matCellDef="let order">
-        <button mat-button (click)="openEdit(contentEdit, order?.id)">Edit</button>
-        <button mat-button (click)="deleteOrder(order.id)">Delete</button>
+        <button mat-button (click)="openEdit(contentEdit, order)">Edit</button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -61,22 +60,15 @@
       <!-- Name Field -->
       <div class="form-group">
         <label for="name">Name</label>
-        <input formControlName="name" id="name" class="form-control" placeholder="Enter agent's name"/>
+        <select formControlName="status" class="form-control">
+          <option value="rejected">REJECTED</option>
+          <option value="pending">PENDING</option>
+          <option value="approved">APPROVED</option>
+
+        </select>
       </div>
 
-      <!-- Email Field -->
-      <div class="form-group">
-        <label for="price">Price</label>
-        <input formControlName="price" id="price"  class="form-control"
-               placeholder="Enter agent's email"/>
-      </div>
-
-      <!-- Phone Number Field -->
-      <div class="form-group">
-        <label for="quantity">Quantity</label>
-        <input formControlName="quantity" id="quantity" class="form-control"
-               placeholder="Enter agent's phone number"/>
-      </div>
+      
       <!-- Action Buttons -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
