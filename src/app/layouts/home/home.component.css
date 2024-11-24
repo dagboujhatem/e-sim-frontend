@@ -1,1 +1,32 @@
 
+body {
+  background-color: #f2f2f2; /* Couleur de fond douce */
+  color: #e60000; /* Couleur du texte Ooredoo */
+  font-family: Arial, sans-serif; /* Police lisible */
+}
+.header {
+  display: flex; /* Utilise flexbox pour aligner logo et texte */
+  align-items: center; /* Centre verticalement */
+  margin: 20px; /* Marges */
+}
+.logo {
+  width: 150px; /* Taille du logo */
+  margin-right: 20px; /* Espace à droite du logo */
+}
+.video-container {
+  margin: 0; /* Supprime les marges pour le conteneur de la vidéo */
+  width: 100%; /* Occupe toute la largeur de la page */
+  height: 315px; /* Hauteur de la vidéo */
+}
+.paragraph {
+  background-color: #ffffff; /* Fond blanc pour le paragraphe */
+  padding: 15px;
+  border-radius: 5px; /* Coins arrondis */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre */
+  margin: 20px auto; /* Marge autour du paragraphe */
+  max-width: 600px; /* Largeur maximale */
+  color: #000000; /* Texte en noir */
+  display: flex; /* Utiliser flexbox pour aligner le contenu */
+  justify-content: space-between; /* Espacement entre le paragraphe et le bouton */
+  align-items: center; /* Centre verticalement */
+}

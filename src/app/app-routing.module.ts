@@ -20,59 +20,60 @@ import {ADMIN, USER} from './shared/constants/app-constants';
 
 const routes: Routes = [
   {
-    path: 'home', component: HomeComponent,
+    path: 'home',
+    loadChildren: () => import('./layouts/home/home.module').then(m => m.HomeModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./layouts/admin/admin.module').then(m => m.AdminModule),
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN]
     },
   },
   {
     path: 'gpt', component: ChatDialogComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: [ADMIN,USER]
-    },
   },
   {
     path: 'orders', component: MyOrdersComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {
     path: 'otp', component: OtpComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {
     path: 'verify-otp', component: OtpVerificationComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {
     path: 'stores', component: StoreMapComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {
     path: 'Qr_code/:otpCode', component: QrCodeComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {
     path: 'commentaire', component: CommentComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {
@@ -85,28 +86,28 @@ const routes: Routes = [
     path: 'dashbord', component: DashboardComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {
     path: 'bmw-products', component: BmwproduitsComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {
     path: 'editProfile', component: ProfileComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {
     path: 'produits', component: CategorieComponent,
     canActivate: [AuthGuard],
     data: {
-      role: [ADMIN,USER]
+      role: [ADMIN, USER]
     },
   },
   {

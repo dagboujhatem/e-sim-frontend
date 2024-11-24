@@ -20,13 +20,14 @@ import {CommentComponent} from './layouts/comment/comment.component';
 import {DashboardComponent} from './layouts/dashboard/dashboard.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {MatLine} from '@angular/material/core';
-import { MyOrdersComponent } from './layouts/my-orders/my-orders.component';
-import { QrCodeComponent } from './layouts/qr-code/qr-code.component';
-import { TokenInterceptor } from './shared/interceptors/TokenInterceptor';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MyOrdersComponent} from './layouts/my-orders/my-orders.component';
+import {QrCodeComponent} from './layouts/qr-code/qr-code.component';
+import {TokenInterceptor} from './shared/interceptors/TokenInterceptor';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CategorieComponent} from './layouts/categorie/categorie.component';
 import {HomeComponent} from './layouts/home/home.component';
 import {StoreMapComponent} from './layouts/store-map/store-map.component';
+import {SidenavComponent} from './components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {StoreMapComponent} from './layouts/store-map/store-map.component';
     MyOrdersComponent,
     CategorieComponent,
     HomeComponent,
-    StoreMapComponent
+    StoreMapComponent,
+    SidenavComponent,
   ],
   imports: [
     FormsModule,

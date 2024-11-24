@@ -1,0 +1,10 @@
+<form [formGroup]="categoryForm" novalidate>
+  <!-- Name Field -->
+  <mat-form-field >
+    <label for="name">Name</label>
+    <input formControlName="name" id="name" matInput placeholder="Enter agent's name"/>
+  </mat-form-field>
+
+  <!-- Action Buttons -->
+    <button type="submit" mat-flat-button (click)="onSave()">Save Changes</button>
+</form>

@@ -9,17 +9,24 @@ import {environment} from '../../../environments/environment';
   providedIn: 'root'
 })
 export class OrderService {
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
 
   addOrder(order: OrderTypes): Observable<OrderTypes> {
 
-    return this.httpClient.post<OrderTypes>(`${environment.apiUrl}${environment.orders}`,order);
+    return this.httpClient.post<OrderTypes>(`${environment.apiUrl}${environment.orders}`, order);
   }
+
+  deleteOrder(orderId: number): Observable<OrderTypes> {
+
+    return this.httpClient.delete<OrderTypes>(`${environment.apiUrl}${environment.orders}/${orderId}`);
+  }
+
   getOrders(): Observable<OrderTypes[]> {
     return this.httpClient.get<OrderTypes[]>(`${environment.apiUrl}${environment.orders}`);
   }
+
   getAllOrdersByUser(): Observable<OrderTypes[]> {
     return this.httpClient.get<OrderTypes[]>(`${environment.apiUrl}${environment.orders}/user`);
   }

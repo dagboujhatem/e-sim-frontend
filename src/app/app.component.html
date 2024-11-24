@@ -1,5 +1,55 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="!this.showSidebar"></app-navbar>
+
+<mat-sidenav-container class="modern-sidenav-container" >
+  <mat-sidenav
+    *ngIf="showSidebar"
+    class="modern-sidenav"
+    mode="side"
+    opened="true"
+  >
+    <mat-toolbar color="primary" class="sidenav-header">
+      Menu
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let router of routers" [ngClass]="router?.class">
+        <button mat-button [routerLink]="[router?.url]" routerLinkActive="active">
+          <mat-icon>{{ router?.icon }}</mat-icon>
+          {{ router?.title }}
+        </button>
+      </mat-list-item>
+
+      <mat-list-item class="mt-4">
+
+        <h5>Settings</h5>
+      </mat-list-item>
+      <mat-list-item routerLink="/editProfile">
+        <button mat-button routerLinkActive="active">
+
+          <mat-icon>person</mat-icon>
+          Edit Profile
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLinkActive="active">
+          <mat-icon (click)="toggleTheme()">{{ themeIcon }}</mat-icon>
+          {{ themeToggleText }}
+        </button>
+      </mat-list-item>
+      <mat-list-item routerLinkActive="active" (click)="logout()">
+        <button mat-button routerLinkActive="active">
+          <mat-icon>logout</mat-icon>
+          Logout
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!---->
+  <mat-sidenav-content>
+    <div class="content">
+
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 
-
-<router-outlet></router-outlet>

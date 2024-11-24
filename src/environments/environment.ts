@@ -4,7 +4,9 @@ export const environment = {
       accessToken:'ya29.c.c0ASRK0Ga36xLujiwpXyDppG3nskIJeCTlMloGVnKVVN4F-Gq3fzYPY30P3_QdJPmabcXVM6yArcJDmom9dNNG_DN41YcxIaWwySpgUBwSmkI0hbRx_wabCceb_WhpO2JSetiOh6unKvfWXXT1MawLBrDLzRfgE-O9Av3tuWcaWytUOsS-T-vYjjCXEJREXVtfPnt_vNimJm1tlLnQHOTevpTp_UMNAPerbdRp7Oi8JcoHqViKmRz3bvWpBOv_yJDLP-yoKOe5UiGlTFHhnulbYvE9qW4NCFfTY4N4Vj0AECbeTu66BC0cdMUkzcREa0N8IHHyiN2gk5snrjRF4N_Gruotuls63rdUcwyBTmTVMd9IyOqeBlSRkt6bhKWBMml3mOunKGoN400AyF5851IuVRfuY7o9IkRM_f3nizbevfM3aMOpt_k83Xfi_i1tn24lOisshBxBojm4uOlgck3V3zzQqzpVm06xsRbOX0sjFkM1db8vabnyBtvcUdMd3ltxo1Otdu8MSJcoz3Wc3OrOUW8W939doUZz4F1mz44ByJd6n8tosgmBf-17t_nQn-4sUunvu_vX8dhFkI9SxulIidwtzs6Qy92eXWeeliR1X7VjphS1bbw2UFwqbcWwF-RizIuhpYFZ_tfucwwxyZ9nSst9Q54e2gJsjR-d5FtojB9IcMRMkBFws14iod27QX744ap8SVu15cpIZnQ5lxb-VUvFsJ7ros8491kuV546iOBgMl_dtbVv4w1-RXB7-ml9sOfdlcFFicjyo7lmfsSJR5XuowJUyf22wuzQSJcVBY4vwRQFazUO4bmXW9xdV_JeozJ6qjrfb_RXJ0gnkFV1QwxQRfiuYFB-QpljxymyOr0BnsjvIi7a24Riv_i31YJ_Uo8zBRRuVbOhdRhB9OaWajUfXUxc5Ow_s_oiraqO1wqIs_9y2z2V3iXJzRcsvSl60F2j4Bwesk2FaiseFo1Xzf1zJQtZ-7QklZyU12mru3ruktJ-nM35yYy'},
     projectId: 'esimbot-acbn',
     apiUrl: 'http://localhost:8443/',
-    orders: 'orders'
+    orders: 'orders',
+    products: 'products',
+    categories: 'categories'
 
   };
 

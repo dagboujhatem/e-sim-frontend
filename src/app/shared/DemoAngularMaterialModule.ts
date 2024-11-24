@@ -1,5 +1,5 @@
 import {NgModule} from "@angular/core";
-import {MatButtonModule} from "@angular/material/button";
+import {MatButton, MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -8,7 +8,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatRadioModule} from "@angular/material/radio";
@@ -16,8 +16,17 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatLine, MatNativeDateModule} from "@angular/material/core";
 import {MatDialogModule} from "@angular/material/dialog";
-import {MatTableModule} from "@angular/material/table";
-import {MatList, MatListItem, MatListSubheaderCssMatStyler} from '@angular/material/list';
+import {
+  MatCell, MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
+  MatTable,
+  MatTableModule
+} from "@angular/material/table";
+import {MatList, MatListItem, MatListSubheaderCssMatStyler, MatNavList} from '@angular/material/list';
+import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
+import {MatSort, MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -25,14 +34,35 @@ import {MatList, MatListItem, MatListSubheaderCssMatStyler} from '@angular/mater
     MatList,
     MatListItem,
     MatListSubheaderCssMatStyler,
-    MatLine
+    MatLine,
+    MatSidenavContainer,
+    MatSidenav,
+    MatSidenavContent,
+    MatNavList,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTable,
+    MatPaginator,
+
+    MatSort,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatRow,
+    MatButton,
   ],
   exports: [
-    MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatToolbarModule,
-    MatInputModule,
     MatSelectModule,
     MatIconModule,
     MatProgressSpinnerModule,
@@ -49,7 +79,28 @@ import {MatList, MatListItem, MatListSubheaderCssMatStyler} from '@angular/mater
     MatTableModule,
     MatList,
     MatListItem,
-    MatIconModule
+    MatIconModule,
+    MatSidenavContainer,
+    MatSidenav,
+    MatNavList,
+    MatSidenavContent,
+    MatSortModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTable,
+    MatPaginator,
+
+    MatSort,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatRow,
+    MatButton,
   ]
 })
 export class DemoAngularMaterialModule {

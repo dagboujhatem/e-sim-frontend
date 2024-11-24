@@ -1,0 +1,23 @@
+<form [formGroup]="productForm" novalidate>
+  <!-- Name Field -->
+  <mat-form-field >
+    <label for="name">Name</label>
+    <input formControlName="name" id="name" matInput placeholder="Enter agent's name"/>
+  </mat-form-field>
+
+  <!-- Email Field -->
+  <mat-form-field >
+    <label for="price">Price</label>
+    <input formControlName="price" id="price" matInput
+           placeholder="Enter agent's email"/>
+  </mat-form-field>
+
+  <!-- Phone Number Field -->
+  <mat-form-field >
+    <label for="quantity">Quantity</label>
+    <input formControlName="quantity" id="quantity" matInput
+           placeholder="Enter agent's phone number"/>
+  </mat-form-field>
+  <!-- Action Buttons -->
+    <button type="submit" mat-flat-button (click)="onSave()">Save Changes</button>
+</form>

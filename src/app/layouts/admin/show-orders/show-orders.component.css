@@ -1,0 +1,23 @@
+.mat-elevation-z8 {
+  margin: 16px 0;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+mat-form-field.filter-field {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}
+
+.mat-paginator {
+  margin-top: 16px;
+}
+
+table {
+  width: 100%;
+}

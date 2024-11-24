@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit{
       (response: User) => {
         if (this.userStorageService.isLoggedIn()) {
           this.router.navigateByUrl('/dashbord');
+
         }
       },
       (error: HttpErrorResponse) => {

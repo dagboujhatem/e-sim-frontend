@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import {ESIM_USER, TOKEN} from '../../constants/app-constants';
+import {BehaviorSubject} from 'rxjs';
 const USER ='esim-user';
 @Injectable({
   providedIn: 'root'
 })
 export class UserStorageService {
+  private userSubject = new BehaviorSubject<any>(this.getStorage(USER));
 
   constructor() { }
-
+  get user$() {
+    return this.userSubject.asObservable();
+  }
   public saveToken (token:string):void{
     window.localStorage.removeItem(TOKEN);
     window.localStorage.setItem(TOKEN, token);
@@ -16,6 +20,8 @@ export class UserStorageService {
   public saveStorage(item:string, body: any): void {
     window.localStorage.removeItem(item);
     window.localStorage.setItem(item, JSON.stringify(body));
+    this.userSubject.next(body); // Mise à jour des observateurs
+
   }
 
   public getToken(): string | null {
@@ -42,5 +48,7 @@ export class UserStorageService {
   public signOut():void{
     window.localStorage.removeItem(TOKEN);
     window.localStorage.removeItem(ESIM_USER);
+    this.userSubject.next(null);
+
   }
 }
