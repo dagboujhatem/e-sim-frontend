@@ -90,7 +90,7 @@ export class ShowProductsComponent implements OnInit, AfterViewInit {
   }
 
   deleteProduct(id: number) {
-    if (confirm('Are you sure you want to delete this agent?')) {
+    if (confirm('Are you sure you want to delete this product?')) {
       this.productService.delete(id).subscribe({
         next: () => {
           console.log('Product deleted successfully.');

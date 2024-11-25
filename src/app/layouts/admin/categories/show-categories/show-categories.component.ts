@@ -63,7 +63,7 @@ export class ShowCategoriesComponent implements OnInit, AfterViewInit {
   }
 
   deleteCategory(id: number) {
-    if (confirm('Are you sure you want to delete this agent?')) {
+    if (confirm('Are you sure you want to delete this category?')) {
       this.categoryService.delete(id).subscribe({
         next: () => {
           console.log('Category deleted successfully.');
