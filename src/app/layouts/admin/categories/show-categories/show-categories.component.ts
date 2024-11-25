@@ -1,24 +1,24 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {Categories} from '../../../shared/model/category.types';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Categories} from '../../../../shared/model/category.types';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {CategoryService} from '../../../shared/services/category.service';
+import {CategoryService} from '../../../../shared/services/category.service';
 
 @Component({
   selector: 'app-show-categories',
   templateUrl: './show-categories.component.html',
   styleUrl: './show-categories.component.css'
 })
-export class ShowCategoriesComponent implements OnInit ,AfterViewInit{
+export class ShowCategoriesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   editForm: FormGroup;
   categories: Categories[] = [];
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['id','name', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'actions'];
 
   constructor(private formBuilder: FormBuilder,
               private categoryService: CategoryService,
@@ -27,14 +27,9 @@ export class ShowCategoriesComponent implements OnInit ,AfterViewInit{
 
   ngOnInit(): void {
     this.getCategories()
-    this.editForm=this.formBuilder.group({
+    this.editForm = this.formBuilder.group({
       id: [],
-      name: [],
-      description: [],
-      price: [],
-      quantity: [],
-      quantityUnit: [],
-      image: [],
+      name: ['', Validators.required],
     })
   }
 
@@ -43,6 +38,7 @@ export class ShowCategoriesComponent implements OnInit ,AfterViewInit{
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
   openEdit(targetModal: any, category: Categories) {
     this.modalService.open(targetModal, {
       centered: true,
@@ -56,7 +52,7 @@ export class ShowCategoriesComponent implements OnInit ,AfterViewInit{
   }
 
   getCategories() {
-    this.categoryService.getCategories().subscribe({
+    this.categoryService.getAll().subscribe({
       next: response => {
         this.dataSource.data = response;
         console.log('Fetched categories:', this.dataSource);
@@ -68,7 +64,7 @@ export class ShowCategoriesComponent implements OnInit ,AfterViewInit{
 
   deleteCategory(id: number) {
     if (confirm('Are you sure you want to delete this agent?')) {
-      this.categoryService.deleteCategory(id).subscribe({
+      this.categoryService.delete(id).subscribe({
         next: () => {
           console.log('Category deleted successfully.');
           this.getCategories();  // Rechargez la liste après suppression
@@ -80,6 +76,10 @@ export class ShowCategoriesComponent implements OnInit ,AfterViewInit{
   }
 
   onSave() {
-
+    this.categoryService.update(this.editForm.value.id,this.editForm.value).subscribe(res => {
+      console.log(res);
+      this.getCategories()
+      this.modalService.dismissAll()
+    })
   }
 }

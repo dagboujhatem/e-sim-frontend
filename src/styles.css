@@ -4,18 +4,22 @@
 
 
 html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    text-size-adjust: 100%; /* Ajoutez ceci pour éviter les avertissements de compatibilité */
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-size-adjust: 100%; /* Ajoutez ceci pour éviter les avertissements de compatibilité */
 }
+
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
 
 
+.mat-drawer-inner-container {
+  overflow-x: hidden !important;
+}
 
-mat-list-item{
+mat-list-item {
   height: 30px;
 }

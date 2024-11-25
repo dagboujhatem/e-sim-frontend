@@ -30,7 +30,7 @@
 
 </ng-template>
 <mat-paginator
-  [length]="dataSource?.data?.length"
+  [length]="dataSource.data.length"
   [pageSize]="5"
   [pageSizeOptions]="[5, 10, 20]"
 >
@@ -52,7 +52,7 @@
       <!-- Action Buttons -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
-        <button type="submit" class="btn btn-primary" (click)="onSave()">Save Changes</button>
+        <button type="submit" class="btn btn-primary" [disabled]="editForm.invalid" (click)="onSave()">Save Changes</button>
       </div>
     </form>
   </div>

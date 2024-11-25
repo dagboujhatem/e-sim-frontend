@@ -1,26 +1,17 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
 import {Categories} from '../model/category.types';
 import {environment} from '../../../environments/environment';
+import {GenericService} from './generic.service';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService {
+export class CategoryService extends GenericService<Categories, number>{
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(http: HttpClient) {
+    super(http, `${environment.apiUrl}${environment.categories}`);
 
-  getCategories(): Observable<Categories[]> {
-    return this.http.get<Categories[]>(`${environment.apiUrl}${environment.categories}`);
-  }
-
-  getCategoryById(categoryId: number): Observable<string> {
-    return this.http.get<string>(`${environment.apiUrl}${environment.categories}/${categoryId}`);
-  }
-  deleteCategory(productId: number): Observable<any> {
-    return this.http.delete(`${environment.apiUrl}${environment.products}/${productId}`);
   }
 }

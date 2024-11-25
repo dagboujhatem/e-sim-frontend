@@ -11,10 +11,10 @@
       Menu
     </mat-toolbar>
     <mat-nav-list>
-      <mat-list-item *ngFor="let router of routers" [ngClass]="router?.class">
+      <mat-list-item *ngFor="let router of routers" [ngClass]="router?.class" class="py-0">
         <button mat-button [routerLink]="[router?.url]" routerLinkActive="active-link"
         [routerLinkActiveOptions]="{exact:true}"
-        
+
         [disabled]="router.url==''">
           <mat-icon>{{ router?.icon }}</mat-icon>
           {{ router?.title }}

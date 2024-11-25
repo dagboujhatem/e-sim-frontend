@@ -1,31 +1,35 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {catchError, map, Observable, of, throwError} from 'rxjs';
 import {Products} from '../model/product.types';
 import {environment} from '../../../environments/environment';
+import {GenericService} from './generic.service';
+import {Categories} from '../model/category.types';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
-  private apiUrl = 'http://localhost:8443/products/category';
-  private url = 'http://localhost:8443/categories';
+export class ProductService extends GenericService<Products, number> {
 
-  constructor(private http: HttpClient) {
+  constructor(http: HttpClient) {
+    super(http, `${environment.apiUrl}${environment.products}`);
+
   }
 
-  getProducts(): Observable<Products[]> {
-    return this.http.get<Products[]>(`${environment.apiUrl}${environment.products}`);
-  }
   getProductsByCategory(categoryId: number): Observable<Products[]> {
-    return this.http.get<Products[]>(`${this.apiUrl}/${categoryId}`);
+    return this.http.get<Products[]>(`${environment.apiUrl}${environment.products}/category/${categoryId}`);
   }
 
   getCategoryName(categoryId: number): Observable<string> {
-    return this.http.get<string>(`${this.url}/category/${categoryId}/name`);
+    return this.http.get<string>(`${environment.apiUrl}${environment.products}/category/${categoryId}/name`);
   }
-  deleteProduct(productId: number): Observable<any> {
-    return this.http.delete(`${environment.apiUrl}${environment.products}/${productId}`);
+
+  addProduct(product: any): Observable<Products> {
+    return this.http.post<Products>(`${environment.apiUrl}${environment.products}/add`, product);
+  }
+
+  editProduct(product: any): Observable<Products> {
+    return this.http.patch<Products>(`${environment.apiUrl}${environment.products}/edit`, product);
   }
 }

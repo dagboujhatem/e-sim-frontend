@@ -1,36 +1,42 @@
 <form [formGroup]="productForm" novalidate>
   <!-- Name Field -->
-  <mat-form-field >
+  <mat-form-field>
     <label for="name">Name</label>
     <input formControlName="name" id="name" matInput placeholder="Enter product's name"/>
   </mat-form-field>
 
   <!-- Email Field -->
-  <mat-form-field >
+  <mat-form-field>
     <label for="price">Price</label>
-    <input formControlName="price" id="price" matInput
+    <input formControlName="price" type="number" id="price" matInput
            placeholder="Enter product's price"/>
   </mat-form-field>
   <!-- Email Field -->
-  <mat-form-field >
+  <mat-form-field>
     <label for="image">Image</label>
     <input formControlName="image" id="image" matInput
            placeholder="Enter product's url image"/>
   </mat-form-field>
   <!-- Email Field -->
-  <mat-form-field >
+  <mat-form-field>
     <label for="description">Description</label>
     <input formControlName="description" id="description" matInput
            placeholder="Enter product's description"/>
   </mat-form-field>
 
   <!-- Phone Number Field -->
-  <mat-form-field >
+  <mat-form-field>
     <label for="quantity">Quantity</label>
-    <input formControlName="quantity" id="quantity" matInput
+    <input formControlName="quantity" type="number" id="quantity" matInput
            placeholder="Enter product's Quantity"/>
   </mat-form-field>
-  
+  <mat-form-field>
+    <label for="quantity">Category</label>
+    <mat-select formControlName="categoryId" class="form-control">
+      <mat-option [value]="item?.id" *ngFor="let item of categories">{{ item?.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <!-- Action Buttons -->
-    <button type="submit" mat-flat-button (click)="onSave()">Save Product</button>
+  <button type="submit" mat-flat-button [disabled]="productForm.invalid" (click)="onSave()">Save Product</button>
 </form>

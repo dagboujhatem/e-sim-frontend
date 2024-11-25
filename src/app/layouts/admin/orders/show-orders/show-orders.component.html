@@ -46,7 +46,7 @@
 
 </ng-template>
 <mat-paginator
-  [length]="dataSource?.data?.length"
+  [length]="dataSource.data.length"
   [pageSize]="5"
   [pageSizeOptions]="[5, 10, 20]"
 >
@@ -68,7 +68,7 @@
         </select>
       </div>
 
-      
+
       <!-- Action Buttons -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>

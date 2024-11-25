@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { OrderTypes } from '../../../shared/model/order.types';
+import { OrderTypes } from '../../../../shared/model/order.types';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { OrderService } from '../../../shared/services/order.service';
+import { OrderService } from '../../../../shared/services/order.service';
 
 @Component({
   selector: 'app-show-orders',

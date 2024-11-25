@@ -6,7 +6,7 @@
     <button class="scroll-button left" (click)="scrollLeft('routeursList')">&#10094;</button>
     <div class="scrollable-list" id="routeursList">
       <div class="card position-relative" *ngFor="let router of routers">
-        <img [src]="router.image" class="card-img-top" alt="{{router.name}}" (click)="afficherDetails(router)">
+        <img [src]="router.image" class="card-img-top" alt="{{router.name}}" (click)="showDetails(router)">
         <div class="card-body">
           <h5 class="card-title">{{ router.name }}</h5>
           <p class="card-text">{{ router.price }} TND</p>
@@ -28,8 +28,8 @@
   <div class="scrollable-list">
     <button class="scroll-button left" (click)="scrollLeft('clesAdslList')">&#10094;</button>
     <div class="scrollable-list" id="clesAdslList">
-      <div class="card" *ngFor="let cle of adslKeys" >
-        <img [src]="cle.image" class="card-img-top" alt="{{cle.name}}" (click)="afficherDetails(cle)">
+      <div class="card" *ngFor="let cle of adslKeys">
+        <img [src]="cle.image" class="card-img-top" alt="{{cle.name}}" (click)="showDetails(cle)">
         <div class="card-body">
           <h5 class="card-title">{{ cle.name }}</h5>
           <p class="card-text">{{ cle.price }} TND</p>
@@ -51,11 +51,18 @@
   <div class="scrollable-list">
     <button class="scroll-button left" (click)="scrollLeft('forfaitsList')">&#10094;</button>
     <div class="scrollable-list" id="forfaitsList">
-      <div class="card" *ngFor="let forfait of ooredooPlans" >
-        <img [src]="forfait.image" class="card-img-top" (click)="afficherDetails(forfait)" alt="{{forfait.name}}">
+      <div class="card" *ngFor="let forfait of ooredooPlans">
+        <img [src]="forfait.image" class="card-img-top" (click)="showDetails(forfait)" alt="{{forfait.name}}">
         <div class="card-body">
           <h5 class="card-title">{{ forfait.name }}</h5>
           <p class="card-text">{{ forfait.price }} TND</p>
+        </div>
+        <div
+
+          class="cart-icon"
+          (mouseover)="$event.stopPropagation()"
+          (mouseleave)="$event.stopPropagation()">
+          <i class="fa fa-dollar" (click)="addToPanel(forfait)"></i>
         </div>
       </div>
     </div>
@@ -81,6 +88,32 @@
       </div>
     </div>
   </div>
+  <form [formGroup]="formPlans">
+    <!-- Buy ooredoo plans -->
+    <div class="modal" [ngClass]="{'show': selectedPlans}" tabindex="-1"
+         [ngStyle]="{'display': selectedPlans ? 'block' : 'none'}">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ selectedPlans?.nom }}</h5>
+            <button type="button" class="btn-close" (click)="fermerModal()" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+
+            <img [src]="selectedPlans?.image" alt="{{selectedPlans?.nom}}" class="img-fluid mb-3">
+            <div class="form-group">
+              <label for="phoneNumber">{{ selectedPlans?.nom }}</label>
+              <input formControlName="phoneNumber" id="phoneNumber" class="form-control" required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="formPlans.invalid" (click)="onSave()">Buy this plans</button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div class="car-button-container text-center">
   <button class="car-button" (click)="navigateToBMWProducts()">

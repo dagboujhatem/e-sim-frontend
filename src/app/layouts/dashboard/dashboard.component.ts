@@ -4,6 +4,8 @@ import {ProductService} from '../../shared/services/product.service';
 import {forkJoin} from 'rxjs';
 import {Products} from '../../shared/model/product.types';
 import {PanelService} from '../../shared/services/panel.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,20 +17,25 @@ export class DashboardComponent implements OnInit {
   adslKeys: Products[] = [];
   ooredooPlans: Products[] = [];
   panel: any[] = [];
+  selectedOffer: any = null;
+  selectedPlans: any = null;
+  handler: any = null;
+  formPlans: FormGroup;
 
   constructor(private router: Router,
               private panelService: PanelService,
+              private snackBar: MatSnackBar,
+              private formBuilder: FormBuilder,
               private productService: ProductService) {
   }
 
   // Données pour les routeurs, clés ADSL et forfaits
 
 
-  selectedOffer: any = null;
-  handler: any = null;
-
   ngOnInit(): void {
-
+    this.formPlans = this.formBuilder.group({
+      phoneNumber: ['']
+    })
     forkJoin([
       this.productService.getProductsByCategory(1),
       this.productService.getProductsByCategory(2),
@@ -44,7 +51,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // Méthode pour afficher les détails
-  afficherDetails(offer: any) {
+  showDetails(offer: any) {
     this.selectedOffer = offer;
     const modalElement = document.getElementById('detailsModal');
     if (modalElement) {
@@ -54,6 +61,7 @@ export class DashboardComponent implements OnInit {
 
   fermerModal() {
     this.selectedOffer = null;
+    this.selectedPlans = null;
   }
 
   navigateToBMWProducts() {
@@ -119,8 +127,16 @@ export class DashboardComponent implements OnInit {
 
 
   addToPanel(product: any): void {
-    product.quantityUnit = 1;
-    this.panelService.AddToPanel(product);
-    console.log(`${product.name} ajouté au panier.`);
+    this.selectedPlans = product;
+    const modalElement = document.getElementById('detailsModal');
+    if (modalElement) {
+      modalElement.style.display = 'block';
+    }
+  }
+
+  onSave() {
+    this.snackBar.open('Plans received', 'Close', {duration: 5000});
+    this.fermerModal()
+
   }
 }

@@ -6,5 +6,5 @@
   </mat-form-field>
 
   <!-- Action Buttons -->
-    <button type="submit" mat-flat-button (click)="onSave()">Save category</button>
+    <button type="submit" mat-flat-button [disabled]="categoryForm.invalid" (click)="onSave()">Save category</button>
 </form>

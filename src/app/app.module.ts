@@ -49,6 +49,9 @@ import {SidenavComponent} from './components/sidenav/sidenav.component';
     StoreMapComponent,
     SidenavComponent,
   ],
+  exports: [
+
+  ],
   imports: [
     FormsModule,
     AppRoutingModule,
