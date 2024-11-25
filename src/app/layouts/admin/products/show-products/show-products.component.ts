@@ -1,13 +1,13 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {Products} from '../../../../shared/model/product.types';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ProductService} from '../../../../shared/services/product.service';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {CategoryService} from '../../../../shared/services/category.service';
-import {Categories} from '../../../../shared/model/category.types';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Products } from '../../../../shared/model/product.types';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProductService } from '../../../../shared/services/product.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { CategoryService } from '../../../../shared/services/category.service';
+import { Categories } from '../../../../shared/model/category.types';
 
 @Component({
   selector: 'app-show-products',
@@ -25,9 +25,9 @@ export class ShowProductsComponent implements OnInit, AfterViewInit {
   selectedFile: any;
 
   constructor(private formBuilder: FormBuilder,
-              private productService: ProductService,
-              private categoryService: CategoryService,
-              private modalService: NgbModal) {
+    private productService: ProductService,
+    private categoryService: CategoryService,
+    private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -40,8 +40,8 @@ export class ShowProductsComponent implements OnInit, AfterViewInit {
       price: [],
       quantity: [],
       quantityUnit: [],
-      photo: [],
-      category: [],
+      image: [],
+      categoryId: [],
     })
   }
 
@@ -64,8 +64,8 @@ export class ShowProductsComponent implements OnInit, AfterViewInit {
       price: product?.price,
       quantity: product?.quantity,
       quantityUnit: product?.quantityUnit,
-      photo: product?.image,
-      category: product?.category?.id,
+      image: product?.image,
+      categoryId: product?.category?.id,
 
     });
   }
@@ -82,7 +82,6 @@ export class ShowProductsComponent implements OnInit, AfterViewInit {
   getCategories() {
     this.categoryService.getAll().subscribe({
       next: response => {
-        this.dataSource.data = response;
         this.categories = response;  // Update the products list
       },
       error: (error) => console.error('Error fetching products:', error)
@@ -116,12 +115,13 @@ export class ShowProductsComponent implements OnInit, AfterViewInit {
     fd.append('photo', this.selectedFile);
     console.log(fd.valueOf())
 
-    this.productService.editProduct(fd).subscribe(
-      {
-        next: res => {
-          console.log(res)
-        }
-      })
+    this.productService.editProduct(this.editForm.value).subscribe({
+      next: res => {
+        console.log(res)
+        this.modalService.dismissAll()
+        this.getProducts()
+      }
+    })
 
   }
 

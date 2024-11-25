@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {ProductService} from '../../shared/services/product.service';
-import {forkJoin} from 'rxjs';
-import {Products} from '../../shared/model/product.types';
-import {PanelService} from '../../shared/services/panel.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductService } from '../../shared/services/product.service';
+import { forkJoin } from 'rxjs';
+import { Products } from '../../shared/model/product.types';
+import { PanelService } from '../../shared/services/panel.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,10 +23,10 @@ export class DashboardComponent implements OnInit {
   formPlans: FormGroup;
 
   constructor(private router: Router,
-              private panelService: PanelService,
-              private snackBar: MatSnackBar,
-              private formBuilder: FormBuilder,
-              private productService: ProductService) {
+    private panelService: PanelService,
+    private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder,
+    private productService: ProductService) {
   }
 
   // Données pour les routeurs, clés ADSL et forfaits
@@ -71,14 +71,14 @@ export class DashboardComponent implements OnInit {
   scrollLeft(listId: string) {
     const list = document.getElementById(listId);
     if (list) {
-      list.scrollBy({left: -200, behavior: 'smooth'}); // Défilement vers la gauche
+      list.scrollBy({ left: -200, behavior: 'smooth' }); // Défilement vers la gauche
     }
   }
 
   scrollRight(listId: string) {
     const list = document.getElementById(listId);
     if (list) {
-      list.scrollBy({left: 200, behavior: 'smooth'}); // Défilement vers la droite
+      list.scrollBy({ left: 200, behavior: 'smooth' }); // Défilement vers la droite
     }
   }
 
@@ -127,15 +127,20 @@ export class DashboardComponent implements OnInit {
 
 
   addToPanel(product: any): void {
+    product.quantityUnit = 1;
+    this.panelService.AddToPanel(product);
+    console.log(`${product.name} ajouté au panier.`);
+
+  }
+  buyPlans(product: any) {
     this.selectedPlans = product;
     const modalElement = document.getElementById('detailsModal');
     if (modalElement) {
       modalElement.style.display = 'block';
     }
   }
-
   onSave() {
-    this.snackBar.open('Plans received', 'Close', {duration: 5000});
+    this.snackBar.open('Plans received', 'Close', { duration: 5000 });
     this.fermerModal()
 
   }

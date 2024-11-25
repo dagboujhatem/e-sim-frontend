@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit{
           this.router.navigateByUrl('/admin/show-categories');
 
         }else if(response.role.includes(USER)){
-          this.router.navigateByUrl('/home');
+          this.router.navigateByUrl('/dashbord');
 
         }
       },
