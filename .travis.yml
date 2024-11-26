@@ -1,0 +1,12 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  # Build Docker image without a Tag
+  - docker build -f Dockerfile.dev .
+  # Build Docker image with a specific tag 
+  # - docker build -t dagboujhatem/e-sim-web-app -f Dockerfile.dev .
+
+script: 
+  - docker run -e CI=true dagboujhatem/e-sim-web-app npm run test
